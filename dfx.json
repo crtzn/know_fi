@@ -3,6 +3,11 @@
     "know_fi_backend": {
       "main": "src/know_fi_backend/main.mo",
       "type": "motoko"
+    },
+    "know_fi_frontend": {
+      "dependencies": ["know_fi_backend"],
+      "source": ["out"],
+      "type": "assets"
     }
   },
   "defaults": {
