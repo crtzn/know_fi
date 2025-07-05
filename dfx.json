@@ -1,0 +1,16 @@
+{
+  "canisters": {
+    "know_fi_backend": {
+      "main": "src/know_fi_backend/main.mo",
+      "type": "motoko"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
