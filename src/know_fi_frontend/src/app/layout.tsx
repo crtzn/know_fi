@@ -1,8 +1,7 @@
 import '@/styles/globals.css';
 
-import { GeistMono } from 'geist/font/mono';
-import { GeistSans } from 'geist/font/sans';
 import { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 
 import { Toaster } from '@/components/ui/sonner';
 import { isDevMode } from '@/core/utils';
@@ -28,11 +27,16 @@ export const metadata: Metadata = {
   },
 };
 
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>{isDevMode && <script src="https://unpkg.com/react-scan/dist/auto.global.js" async />}</head>
-      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className={`${inter.className} font-sans`}>
         <ReactQueryProvider>{children}</ReactQueryProvider>
         <Toaster />
       </body>

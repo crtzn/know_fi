@@ -15,6 +15,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@dfinity/use-auth-client": "^2.4.1",
     "@hookform/resolvers": "^5.1.1",
     "@hookstate/core": "^4.0.2",
     "@hookstate/devtools": "^4.0.3",
