@@ -12,7 +12,9 @@
     "@next/next/no-img-element": "off",
     "import/no-anonymous-default-export": "off",
     "tailwindcss/no-custom-classname": "off",
-    "unused-imports/no-unused-imports": "warn"
+    "unused-imports/no-unused-imports": "warn",
+    "tailwindcss/classnames-order": "off",
+    "prettier/prettier": "off"
   },
   "overrides": [
     {

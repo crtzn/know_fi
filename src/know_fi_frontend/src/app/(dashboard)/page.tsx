@@ -4,7 +4,6 @@ import { AnalyticsGraph } from '@/components/features/dashboard/AnalyticsPage';
 import { CourseCard } from '@/components/features/dashboard/CoursePage';
 import { MarketplaceCard } from '@/components/features/dashboard/MarketplacePage';
 import { QuizCard } from '@/components/features/dashboard/QuizPage';
-import Template from '@/components/sample/template';
 import { Separator } from '@/components/ui/separator';
 import useClient from '@/core/hooks/utils/useClient';
 
@@ -16,13 +15,13 @@ export default function Home() {
       {isClient && (
         <div className="flex flex-col gap-10">
           {/* Top part */}
-          <div className="flex mb-20">
-            <div className="flex-col flex">
-              <h1 className="font-bold text-5xl mb-5">Your Dashbaord</h1>
+          <div className="mb-20 flex">
+            <div className="flex flex-col">
+              <h1 className="mb-5 text-5xl font-bold">Your Dashbaord</h1>
               <span>GET NFT rewards if na-reach yung</span>
               <span>rare badge na pwede mabenta sa marketplace</span>
             </div>
-            <div className="flex-grow"></div>
+            <div className=""></div>
             <div>
               <span className="font-bold">12.3 points</span>
             </div>

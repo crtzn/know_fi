@@ -4,7 +4,7 @@
   "tabWidth": 2,
   "printWidth": 120,
 
-  "plugins": ["@ianvs/prettier-plugin-sort-imports"],
+  "plugins": ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
 
   "importOrder": [
     "node",

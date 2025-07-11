@@ -1,10 +1,9 @@
 import '@/styles/globals.css';
 
-import { GeistMono } from 'geist/font/mono';
-import { GeistSans } from 'geist/font/sans';
-import { Link } from 'lucide-react';
 import { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 
+import { ProtectedRoute } from '@/components/features/ProtectedRoute';
 import Menu from '@/components/features/sidebarMenu';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -13,8 +12,8 @@ import ReactQueryProvider from '@/providers/lib/react-query';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://vercel.com'),
-  title: 'Next-Tailwind Starter Template',
-  description: 'Starter Template',
+  title: 'Knowfi',
+  description: 'template',
   keywords: ['nextjs', 'tailwindcss', 'template', 'starter', 'kit'],
   openGraph: {
     siteName: 'Next-Tailwind Starter Template',
@@ -31,19 +30,26 @@ export const metadata: Metadata = {
   },
 };
 
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>{isDevMode && <script src="https://unpkg.com/react-scan/dist/auto.global.js" async />}</head>
-      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className={`${inter.className}`}>
         <ReactQueryProvider>
           <TooltipProvider>
-            <div className="flex h-screen w-full">
-              <div className="w-[13%] md:w-[8%] lg:w-[18%] xl:w-[13%] bg-gray-300">
-                <Menu />
+            <ProtectedRoute>
+              <div className="flex h-screen w-full">
+                <div className="w-[13%] bg-gray-300 md:w-[8%] lg:w-[18%] xl:w-[13%]">
+                  <Menu />
+                </div>
+                <div className="mx-[5%] mt-14 w-[87%] overflow-auto md:w-[92%] lg:w-[82%] xl:w-[87%]">{children}</div>
               </div>
-              <div className="w-[87%] md:w-[92%] lg:w-[82%] xl:w-[87%] mx-[5%] mt-14 overflow-auto">{children}</div>
-            </div>
+            </ProtectedRoute>
           </TooltipProvider>
         </ReactQueryProvider>
         <Toaster />
