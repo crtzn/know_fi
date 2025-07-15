@@ -51,5 +51,5 @@ export const useAuth = () => {
     updateActor();
   };
 
-  return { login, logout, isLoading, isAuthenticated, authClient };
+  return { login, logout, isLoading, isAuthenticated, authClient, actor };
 };

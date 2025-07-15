@@ -14,11 +14,7 @@ const nextConfig = (phase, { defaultConfig }) => {
   if (phase === PHASE_PRODUCTION_BUILD || process.env.NEXT_PUBLIC_ENV == '1') {
     return {
       ...baseConfig,
-      compiler: {
-        removeConsole: {
-          exclude: ['error', 'warn'], // remove logs except error and warn
-        },
-      },
+      compiler: {},
     };
   }
 
