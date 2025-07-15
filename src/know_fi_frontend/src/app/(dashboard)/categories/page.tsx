@@ -59,6 +59,11 @@ function Page() {
     }
   };
 
+  const getCategories = async () => {
+    const result = await actor.getCategories();
+    console.log('result', result);
+  };
+
   return (
     <div className="container min-h-screen">
       <div className="item-center m-auto flex min-h-screen w-full flex-col justify-center text-center">
@@ -111,6 +116,7 @@ function Page() {
             </form>
           </Form>
         </div>
+        <Button onClick={getCategories}>Get Categories</Button>
       </div>
     </div>
   );
