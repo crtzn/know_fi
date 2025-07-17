@@ -99,7 +99,14 @@
     @apply outline-dashed outline-green-400;
   }
   .form-error {
-    @apply text-sm italic mt-1 text-red-500 font-semibold;
+    @apply mt-1 text-sm font-semibold italic text-red-500;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 

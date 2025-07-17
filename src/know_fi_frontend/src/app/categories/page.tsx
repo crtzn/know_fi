@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 // import { toast } from 'sonner';
@@ -36,7 +37,7 @@ const FormSchema = z.object({
 });
 
 function Page() {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<String[]>([]);
   const { actor, isAuthenticated } = useAuth();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -44,11 +45,13 @@ function Page() {
       categories: ['Trading', 'Programming'],
     },
   });
+  const route = useRouter();
 
   const handleSubmit = async () => {
     if (!actor) return null;
     await actor.setCategories(selectedCategories);
     console.log(selectedCategories);
+    route.push('/');
   };
 
   const handleCategoryChange = (category: string, checked: boolean) => {
@@ -60,8 +63,8 @@ function Page() {
   };
 
   const getCategories = async () => {
-    const result = await actor.getCategories();
-    console.log('result', result);
+    const categories = await actor?.getCategories();
+    console.log(categories);
   };
 
   return (

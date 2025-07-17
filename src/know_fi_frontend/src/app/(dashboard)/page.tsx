@@ -11,7 +11,7 @@ export default function Home() {
   const { isClient } = useClient();
 
   return (
-    <main className="font-sans">
+    <main>
       {isClient && (
         <div className="flex flex-col gap-10">
           {/* Top part */}
@@ -43,17 +43,9 @@ export default function Home() {
           </div>
 
           {/* RIGHT */}
-          <div className="flex gap-6">
-            <div className="w-[50%]">
-              <QuizCard />
-            </div>
-            <div className="w-[50%]">
-              <CourseCard />
-            </div>
-          </div>
-
-          <div className="mb-10">
-            <Separator />
+          <div className="grid grid-cols-2 gap-6">
+            <QuizCard />
+            <CourseCard />
           </div>
         </div>
       )}
