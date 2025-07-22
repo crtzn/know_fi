@@ -22,20 +22,20 @@ export default function Home() {
           {/* Graphs and charts section */}
           {/* LEFT */}
           <div className="flex gap-20">
-            <div className="w-[50%]">
+            <div className="w-6/12">
               <CoursesCard />
             </div>
-            <div className="w-[50%]">
+            <div className="w-6/12">
               <CoursesCard />
             </div>
           </div>
 
           {/* RIGHT */}
           <div className="flex gap-20">
-            <div className="w-[50%]">
+            <div className="w-6/12">
               <CoursesCard />
             </div>
-            <div className="mb-10 w-[50%]">
+            <div className="mb-10 w-6/12">
               <CoursesCard />
             </div>
           </div>

@@ -30,10 +30,10 @@ export default function Home() {
           {/* Graphs and charts section */}
           {/* LEFT */}
           <div className="flex gap-6">
-            <div className="w-[50%]">
+            <div className="w-6/12">
               <AnalyticsGraph />
             </div>
-            <div className="w-[50%]">
+            <div className="w-6/12">
               <MarketplaceCard />
             </div>
           </div>

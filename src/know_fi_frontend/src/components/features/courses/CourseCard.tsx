@@ -44,8 +44,8 @@ export function CoursesCard() {
           <div className="flex flex-col gap-72">
             <div className="flex w-full">
               <div className="flex flex-col">
-                <div className="font-bold text-4xl">Trading 101</div>
-                <div className="font-bold text-4xl">By Udemy</div>
+                <div className="text-4xl font-bold">Trading 101</div>
+                <div className="text-4xl font-bold">By Udemy</div>
               </div>
               <div className="flex-grow"></div>
               <div>
@@ -72,7 +72,7 @@ export function CoursesCard() {
         <div className="text-muted-foreground leading-none">Showing total visitors for the last 6 months</div> */}
         </CardFooter>
       </Card>
-      <div className="justify-center flex text-lg">100 tokens to unlock this course</div>
+      <div className="flex justify-center text-lg">100 tokens to unlock this course</div>
     </div>
   );
 }

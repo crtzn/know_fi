@@ -26,7 +26,7 @@ import { useAuth } from '@/hooks/useAuth';
 const setOfCategories = [
   { id: 1, name: 'Trading' },
   { id: 2, name: 'Programming' },
-  { id: 3, name: 'Creatives' },
+  { id: 3, name: 'Internet Computer Protocol' },
   { id: 4, name: 'Artificial Intelligence' },
 ];
 
