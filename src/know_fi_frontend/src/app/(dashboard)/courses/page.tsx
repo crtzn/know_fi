@@ -21,23 +21,17 @@ export default function Home() {
 
           {/* Graphs and charts section */}
           {/* LEFT */}
-          <div className="flex gap-20">
-            <div className="w-6/12">
-              <CoursesCard />
-            </div>
-            <div className="w-6/12">
-              <CoursesCard />
-            </div>
+          <div className="grid grid-cols-3 gap-10">
+            <CoursesCard />
+            <CoursesCard />
+            <CoursesCard />
           </div>
 
           {/* RIGHT */}
-          <div className="flex gap-20">
-            <div className="w-6/12">
-              <CoursesCard />
-            </div>
-            <div className="mb-10 w-6/12">
-              <CoursesCard />
-            </div>
+          <div className="grid grid-cols-3 gap-10">
+            <CoursesCard />
+            <CoursesCard />
+            <CoursesCard />
           </div>
         </div>
       )}

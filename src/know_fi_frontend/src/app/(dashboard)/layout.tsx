@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import { ProtectedRoute } from '@/components/features/ProtectedRoute';
+import Sidebar from '@/components/features/sidebar/sidebar';
 import Menu from '@/components/features/sidebarMenu';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -44,12 +45,11 @@ export default function RootLayout({ children }) {
           <TooltipProvider>
             <ProtectedRoute>
               <div className="flex h-screen w-full">
-                <div className="w-[13%] bg-gray-300 md:w-[8%] lg:w-[18%] xl:w-[13%]">
-                  <Menu />
+                <div className="w-[4%]">
+                  {/* <Menu /> */}
+                  <Sidebar />
                 </div>
-                <div className="no-scrollbar mx-[5%] mt-14 w-[87%] overflow-auto md:w-[92%] lg:w-[82%] xl:w-[87%]">
-                  {children}
-                </div>
+                <div className="w-full overflow-auto px-[12%] pt-14">{children}</div>
               </div>
             </ProtectedRoute>
           </TooltipProvider>

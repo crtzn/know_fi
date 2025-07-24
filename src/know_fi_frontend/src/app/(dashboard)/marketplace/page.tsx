@@ -13,8 +13,9 @@ export default function Home() {
           <div className="mb-20 flex">
             <div className="flex flex-col">
               <h1 className="mb-5 text-5xl font-bold">Marketplace</h1>
-              <span>This feature will be available in our Phase 2. Please visit</span>
-              <span>website to view our porject roadmap.</span>
+              <span>
+                This feature will be available in our Phase 2. Please visit <br /> website to view our porject roadmap.
+              </span>
             </div>
           </div>
 

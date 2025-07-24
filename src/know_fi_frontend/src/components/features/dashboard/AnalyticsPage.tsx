@@ -1,9 +1,9 @@
 'use client';
 
-import { TrendingUp } from 'lucide-react';
+import Link from 'next/link';
 import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 
 export const description = 'A multiple bar chart';
@@ -34,13 +34,10 @@ const chartConfig = {
 export function AnalyticsGraph() {
   return (
     <div className="flex flex-col gap-5">
-      <div className="font-bold text-4xl">Analytics</div>
-      <div>
+      <div className="text-4xl font-bold">Analytics</div>
+      <Link href={'/analytics'}>
         <Card>
-          <CardHeader>
-            {/* <CardTitle>Bar Chart - Multiple</CardTitle>
-        <CardDescription>January - June 2024</CardDescription> */}
-          </CardHeader>
+          <CardHeader></CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig}>
               <BarChart accessibilityLayer data={chartData}>
@@ -53,14 +50,9 @@ export function AnalyticsGraph() {
               </BarChart>
             </ChartContainer>
           </CardContent>
-          <CardFooter className="flex-col items-start gap-2 text-sm">
-            {/* <div className="flex gap-2 leading-none font-medium">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-            </div>
-            <div className="text-muted-foreground leading-none">Showing total visitors for the last 6 months</div> */}
-          </CardFooter>
+          <CardFooter className="flex-col items-start gap-2 text-sm"></CardFooter>
         </Card>
-      </div>
+      </Link>
     </div>
   );
 }

@@ -1,66 +1,41 @@
 'use client';
 
-import { TrendingUp } from 'lucide-react';
-import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
+import Image from 'next/image';
+import Link from 'next/link';
 
+import sampleNft from '@/components/common/icons/sampleNft.png';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 
 export const description = 'A multiple bar chart';
-
-const chartData = [
-  { month: 'Juan', desktop: 186, mobile: 80, tablet: 90 },
-  { month: 'Pedro', desktop: 305, mobile: 200, tablet: 90 },
-  { month: 'Tanggol', desktop: 237, mobile: 120, tablet: 90 },
-  { month: 'skibidi', desktop: 73, mobile: 190, tablet: 90 },
-  { month: 'nigg', desktop: 209, mobile: 130, tablet: 90 },
-];
-
-const chartConfig = {
-  desktop: {
-    label: 'Desktop',
-    color: 'var(--chart-1)',
-  },
-  mobile: {
-    label: 'Mobile',
-    color: 'var(--chart-2)',
-  },
-  tablet: {
-    label: 'Tablet',
-    color: 'var(--chart-3)',
-  },
-} satisfies ChartConfig;
 
 export function MarketplaceCard() {
   return (
     <div className="flex flex-col gap-5">
-      <div className="font-bold text-4xl">Marketplace</div>
-      <div>
+      <div className="text-4xl font-bold">Marketplace</div>
+      <Link href={'/marketplace'}>
         <Card>
           <CardHeader>
-            {/* <CardTitle>Bar Chart - Multiple</CardTitle>
-        <CardDescription>January - June 2024</CardDescription> */}
+            <CardTitle className="text-4xl font-bold">Featured NFTs</CardTitle>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={chartConfig}>
-              <BarChart accessibilityLayer data={chartData}>
-                <CartesianGrid vertical={true} />
-                <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
-                <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dashed" />} />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-                <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-                <Bar dataKey="tablet" fill="var(--color-tablet)" radius={4} />
-              </BarChart>
-            </ChartContainer>
+            <div className="flex flex-col gap-5">
+              <div className="flex h-64 w-full">
+                <div className="flex w-5/12 items-center justify-center">
+                  <Image src={sampleNft} alt="Logo" width={230} height={36} unoptimized />
+                </div>
+                <div className="flex w-7/12 items-start justify-start pb-2 text-3xl">
+                  NFT name: Sample NFT
+                  <br />
+                  Rarity: LEGENDARY
+                </div>
+              </div>
+            </div>
           </CardContent>
-          <CardFooter className="flex-col items-start gap-2 text-sm">
-            {/* <div className="flex gap-2 leading-none font-medium">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="text-muted-foreground leading-none">Showing total visitors for the last 6 months</div> */}
+          <CardFooter className="flex justify-end">
+            <div className="mb-2 text-4xl font-bold">buy and sell now</div>
           </CardFooter>
         </Card>
-      </div>
+      </Link>
     </div>
   );
 }

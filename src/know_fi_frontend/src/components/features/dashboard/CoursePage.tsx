@@ -1,77 +1,43 @@
 'use client';
 
-import { Info, TrendingUp, Zap } from 'lucide-react';
-import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
+import { Info } from 'lucide-react';
+import Link from 'next/link';
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-
-export const description = 'A multiple bar chart';
-
-const chartData = [
-  { month: 'Juan', desktop: 186, mobile: 80, tablet: 90 },
-  { month: 'Pedro', desktop: 305, mobile: 200, tablet: 90 },
-  { month: 'Tanggol', desktop: 237, mobile: 120, tablet: 90 },
-  { month: 'skibidi', desktop: 73, mobile: 190, tablet: 90 },
-  { month: 'nigg', desktop: 209, mobile: 130, tablet: 90 },
-];
-
-const chartConfig = {
-  desktop: {
-    label: 'Desktop',
-    color: 'var(--chart-1)',
-  },
-  mobile: {
-    label: 'Mobile',
-    color: 'var(--chart-2)',
-  },
-  tablet: {
-    label: 'Tablet',
-    color: 'var(--chart-3)',
-  },
-} satisfies ChartConfig;
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 export function CourseCard() {
   return (
     <div className="flex flex-col gap-5">
-      <div className="font-bold text-4xl">Course</div>
+      <div className="text-4xl font-bold">Course</div>
       <div>
-        <Card>
-          <CardHeader>
-            {/* <CardTitle>Bar Chart - Multiple</CardTitle>
-        <CardDescription>January - June 2024</CardDescription> */}
-          </CardHeader>
+        <Card className="rounded-lg transition-all duration-200 hover:-translate-y-2 hover:translate-x-2 hover:shadow-[-10px_10px_0px_rgba(0,0,0,1)]">
+          <CardHeader></CardHeader>
           <CardContent>
-            <div className="flex flex-col gap-72 items-center">
+            <div className="flex flex-col items-center gap-72">
               <div className="flex w-full">
                 <div className="flex flex-col">
-                  <div className="font-bold text-4xl">Trading 101 by:</div>
-                  <div className="font-bold text-4xl">Udemy</div>
+                  <div className="text-4xl font-bold">Trading 101 by:</div>
+                  <div className="text-4xl font-bold">Udemy</div>
                 </div>
-                <div className="flex-grow"></div>
+                <div className="grow"></div>
                 <div>
-                  <Info width={28} height={28} />
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Info width={28} height={28} />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Info</p>
+                    </TooltipContent>
+                  </Tooltip>
                 </div>
               </div>
-              <div className="font-bold text-4xl">Redeem Course</div>
+              <Link href={'/courses'} className="rounded-lg text-4xl font-bold hover:text-[#65009F]">
+                Redeem Course
+              </Link>
             </div>
-            {/* <ChartContainer config={chartConfig}>
-              <BarChart accessibilityLayer data={chartData}>
-                <CartesianGrid vertical={true} />
-                <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
-                <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dashed" />} />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-                <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-                <Bar dataKey="tablet" fill="var(--color-tablet)" radius={4} />
-              </BarChart>
-            </ChartContainer> */}
           </CardContent>
-          <CardFooter className="flex-col items-start gap-2 text-sm">
-            {/* <div className="flex gap-2 leading-none font-medium">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="text-muted-foreground leading-none">Showing total visitors for the last 6 months</div> */}
-          </CardFooter>
+          <CardFooter className="flex-col items-start gap-2 text-sm"></CardFooter>
         </Card>
       </div>
     </div>

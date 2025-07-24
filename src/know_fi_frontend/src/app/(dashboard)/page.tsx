@@ -15,27 +15,29 @@ export default function Home() {
       {isClient && (
         <div className="flex flex-col gap-10">
           {/* Top part */}
-          <div className="mb-20 flex">
+          <div className="mb-10 flex">
             <div className="flex flex-col">
               <h1 className="mb-5 text-5xl font-bold">Your Dashbaord</h1>
-              <span>GET NFT rewards if na-reach yung</span>
-              <span>rare badge na pwede mabenta sa marketplace</span>
+              <span>
+                GET NFT rewards if na-reach yung <br /> rare badge na pwede mabenta sa marketplace
+              </span>
             </div>
-            <div className=""></div>
+            <div className="grow"></div>
             <div>
-              <span className="font-bold">12.3 points</span>
+              <span className="text-xl font-bold">12.3 points</span>
             </div>
+            {/* <div className="flex items-start">
+              <span className="flex items-start rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-xl font-bold text-white">
+                Available points: 12.3
+              </span>
+            </div> */}
           </div>
 
           {/* Graphs and charts section */}
           {/* LEFT */}
-          <div className="flex gap-6">
-            <div className="w-6/12">
-              <AnalyticsGraph />
-            </div>
-            <div className="w-6/12">
-              <MarketplaceCard />
-            </div>
+          <div className="grid grid-cols-2 gap-10">
+            <AnalyticsGraph />
+            <MarketplaceCard />
           </div>
 
           <div>
