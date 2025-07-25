@@ -1,75 +1,172 @@
-# Next14-Tailwind Starter Template
+# KnowFi: Where Knowledge and Finance Intertwine
 
-<p align="center">
-  <img src="https://img.shields.io/badge/build-passing-brightgreen" alt="Build Status" />
-  <img src="https://img.shields.io/badge/license-MIT-blue" alt="License" />
-</p>
+**KnowFi** KnowFi is learn to earn platform. KnowFi is a Web3-focused learning management system (LMS) designed to help users easily understand and navigate the world of decentralized technologies. With a focus on Web3 and the Internet Computer Protocol (ICP), KnowFi offers structured, beginner-friendly courses, interactive modules, and hands-on projects to bridge the knowledge gap in blockchain and decentralized internet.
 
-<p align="center">
-  <img src="https://miro.medium.com/max/1200/1*Y6mWTVoATSq7NGBN49HX9w.jpeg" alt="twin, next, styled-components" width="500">
-</p>
+---
 
-## Table of Contents
+## 🌟 Project Overview
 
-- [Getting Started](#getting-started)
-- [Summary](#summary)
-- [Contributing](#contributing)
-- [License](#license)
+**KnowFi** is a Web3-focused Learning Management System (LMS) designed for anyone interested in blockchain, ICP, and decentralized internet. Whether you’re a student, developer, or simply curious, KnowFi offers:
 
-## Getting Started
+- **Structured, beginner-friendly courses**
+- **Interactive quizzes and modules**
+- **Hands-on projects**
+- **Community-driven support**
+- **Learn-to-earn mechanics (energy system & rewards)**
 
-Run the following command to bootstrap your next-app using this template:
+---
+
+## 🚀 Features
+
+- **Seamless Onboarding:** New users are guided through a category selection to personalize their learning path.
+- **Gamified Learning:** Users receive 25 "energy" (Matic) upon signup, which is spent to answer quiz questions.
+- **Dashboard Experience:** After onboarding, users access a dashboard with courses, analytics, and a marketplace.
+- **Web3 Integration:** Built on ICP, with a focus on decentralized, transparent, and user-owned learning.
+- **Modern Frontend:** Built with Next.js, styled with Tailwind CSS, and managed with Yarn.
+
+---
+
+## 🗺️ Project Roadmap (KnowMAP)
+
+KnowFi is being developed in phases, with a clear vision for future growth and features. Here’s an overview of our current and upcoming milestones:
+
+### **Phase 1: Foundation & Development**
+
+- Begin core platform development integrated in ICP.
+- Transform initial ideas into a working product.
+- Establish key features and infrastructure to support learning and financial tools.
+
+### **Phase 2: Marketplace**
+
+- Introduce the KnowFi Marketplace—a central hub for users to buy, sell, and trade digital assets.
+- Highlight its role as a key value driver within the ecosystem.
+
+### **Phase 3: NFT Collection + Reward Staking**
+
+- Launch a KnowFi NFT collection.
+- Award NFTs for completing advanced courses or milestones. These NFTs can be traded in the marketplace.
+- Enhance earning potential with staking and expanded rewards.
+
+## More Soon!
+
+> **Note:** Some features described above are part of our future plans and are not yet implemented. This roadmap demonstrates our commitment to continuous development and innovation.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** Next.js, React, Tailwind CSS, Shadcn, Yarn
+- **Backend:** Internet Computer Protocol (ICP), Motoko
+
+---
+
+## 🏁 Getting Started
+
+### 1. Clone the Repository
 
 ```bash
-yarn create next-app [project-name] -e https://github.com/nelwincatalogo/next14-tailwind
+git clone <repo-url>
+cd know_fi
 ```
 
-OR
+### 2. Install Dependencies
 
 ```bash
-npx create-next-app [project-name] -e https://github.com/nelwincatalogo/next14-tailwind
+yarn install
 ```
 
-## Summary
+### 3. Start the ICP Local Replica
 
-### Core Features
+```bash
+dfx start --background
+```
 
-- **Next.js 14** (App Router, TypeScript, built-in Metadata/SEO)
-- **React 18** (Concurrent features, modern rendering)
-- **TailwindCSS v3** with custom theme and dark mode (via `next-themes`)
-- **Absolute imports** with aliases (see `components.json`)
-- **TypeScript** by default
-- **Pre-configured fonts:** Geist, Inter, Poppins
+### 4. Deploy Canisters
 
-### UI & Components
+```bash
+dfx deploy
+```
 
-- [shadcn/ui](https://ui.shadcn.com/) components: AlertDialog, Dialog, Drawer, Popover, Badge, Calendar, Input, ScrollArea, Sonner (toast), and more
-- **Custom UI collection**: Advanced Date Range Picker, Loading states, and sample components
-- [React Icons](https://react-icons.github.io/react-icons/), [Lucide React](https://lucide.dev/)
+### 5. Generate Candid Interface (if backend changes)
 
-### State & Data Management
+```bash
+npm run generate
+```
 
-- [hookstate](https://hookstate.js.org/) (with devtools, localstorage persistence)
-- [React Query](https://tanstack.com/query/latest/docs/framework/react/installation) (with devtools, sample hooks, and provider)
+### 6. Start the Frontend
 
-### Utilities & Tooling
+```bash
+cd src/know_fi_frontend
+yarn dev
+```
 
-- [Prettier](https://prettier.io/), [ESLint](https://eslint.org/) (with Tailwind and Prettier plugins)
-- [Husky](https://typicode.github.io/husky/) (lint on pre-commit)
-- [Zod](https://zod.dev/) for schema validation
-- [Axios](https://axios-http.com/) for HTTP requests
-- [date-fns](https://date-fns.org/) for date utilities
+---
 
-### Developer Experience
+## 🧑‍💻 How KnowFi Works
 
-- **Sample pages/components**: Dialogs, toasts, loading, forms, advanced date picker, etc.
-- **Metadata/SEO** setup in `app/layout.tsx`
-- **Ready-to-use scripts**: dev, build, lint, format, prepare
+1. **User Login:**
+   Users authenticate via the login page.
 
-## Contributing
+2. **Onboarding (Categories):**
+   New users are redirected to the categories page to select their interests.
 
-If you would like to contribute, please fork the repository and submit a pull request.
+3. **Energy Allocation:**
+   Upon first login, each user receives 25 "energy" (Matic).
+   - **Energy** is the currency for answering quiz questions.
 
-## License
+4. **Dashboard Entry:**
+   After onboarding, users access the dashboard, which is the main entry point to the system.
 
-This project is licensed under the MIT License.
+5. **Learning & Earning:**
+   - Users spend energy to answer quiz questions.
+   - Completing quizzes and courses may unlock rewards, badges, or more energy.
+
+6. **Marketplace & Analytics:**
+   - Users can view their progress, analytics, and access a marketplace for additional resources or rewards.
+
+---
+
+## 📝 Project Structure
+
+```
+know_fi/
+  ├── src/
+  │   ├── know_fi_backend/      # Motoko backend (ICP canisters)
+  │   └── know_fi_frontend/     # Next.js frontend
+  ├── dfx.json                  # ICP config
+  ├── package.json              # Project dependencies
+  └── README.md                 # This file
+```
+
+---
+
+## 🧩 Environment Variables
+
+- If hosting frontend separately, set `DFX_NETWORK=ic` or configure as needed (see below).
+- For local development, no extra configuration is needed.
+
+---
+
+## 💡 Contributing
+
+Pull requests and suggestions are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📄 License
+
+[MIT](LICENSE)
+
+---
+
+## 🙏 Acknowledgements
+
+- Internet Computer Protocol (ICP)
+- Motoko Language
+- Next.js & React
+- Hackathon organizers and community
+
+---
+
+**KnowFi: Where Knowledge and Finance Intertwine.**
+Empowering the next generation of Web3 learners and builders.
