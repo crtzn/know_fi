@@ -30,7 +30,7 @@ export default function Sidebar() {
   const toggleCollapse = () => setIsCollapsed(!isCollapsed);
 
   return (
-    <div className="relative">
+    <aside className="relative">
       {/* Mobile Hamburger Button */}
       <button
         onClick={toggleSidebar}
@@ -130,6 +130,6 @@ export default function Sidebar() {
           )}
         </div>
       </div>
-    </div>
+    </aside>
   );
 }

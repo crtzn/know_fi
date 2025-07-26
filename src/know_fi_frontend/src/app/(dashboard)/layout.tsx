@@ -44,11 +44,8 @@ export default function RootLayout({ children }) {
         <ReactQueryProvider>
           <TooltipProvider>
             <ProtectedRoute>
-              <div className="flex h-screen w-full">
-                <div className="w-[4%]">
-                  {/* <Menu /> */}
-                  <Sidebar />
-                </div>
+              <div className="grid h-screen w-full lg:grid-cols-[250px_1fr]">
+                <Sidebar />
                 <div className="w-full overflow-auto px-[12%] pt-14">{children}</div>
               </div>
             </ProtectedRoute>

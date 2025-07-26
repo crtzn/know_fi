@@ -5,8 +5,12 @@
       "type": "motoko"
     },
     "know_fi_frontend": {
-      "dependencies": ["know_fi_backend"],
-      "source": ["src/know_fi_frontend/out"],
+      "dependencies": [
+        "know_fi_backend"
+      ],
+      "source": [
+        "src/know_fi_frontend/out"
+      ],
       "type": "assets"
     },
     "internet_identity": {
@@ -24,7 +28,7 @@
   "defaults": {
     "build": {
       "args": "",
-      "packtool": ""
+      "packtool": "mops sources"
     }
   },
   "output_env_file": ".env",

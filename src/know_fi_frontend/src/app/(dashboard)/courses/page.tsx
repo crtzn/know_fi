@@ -15,7 +15,7 @@ export default function Home() {
             <div className="flex flex-col">
               <h1 className="mb-5 text-5xl font-bold">Courses</h1>
               <span>List of course you can take by unlocking with a tokens. Token</span>
-              <span>earned by taking a quiz or buying in the marketplace</span>
+              <span>earned by taking a quiz or quests</span>
             </div>
           </div>
 

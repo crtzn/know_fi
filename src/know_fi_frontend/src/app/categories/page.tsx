@@ -119,7 +119,6 @@ function Page() {
             </form>
           </Form>
         </div>
-        <Button onClick={getCategories}>Get Categories</Button>
       </div>
     </div>
   );

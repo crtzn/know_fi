@@ -13,7 +13,7 @@ export function MarketplaceCard() {
     <div className="flex flex-col gap-5">
       <div className="text-4xl font-bold">Marketplace</div>
       <Link href={'/marketplace'}>
-        <Card>
+        <Card className="rounded-none">
           <CardHeader>
             <CardTitle className="text-4xl font-bold">Featured NFTs</CardTitle>
           </CardHeader>

@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { shuffleArray } from '@/core/utils';
 import { useAuth } from '@/hooks/useAuth';
-import { UserProfile } from '@/hooks/userProfile';
 import { quizData } from '@/providers/lib/quizData';
 
+import { UserProfile } from './userProfile';
+
 export const useQuizProgress = () => {
-  const { energy } = UserProfile();
   const { actor } = useAuth();
+  const { setCurrentEnergy, currentEnergy } = UserProfile();
 
   const [categories, setCategories] = useState<string[][]>([]);
   const [filteredQuestions, setFilteredQuestions] = useState<any[]>([]);
@@ -58,15 +59,23 @@ export const useQuizProgress = () => {
     }
   }, [filteredQuestions, currentIndex]);
 
+  useEffect(() => {
+    userTakeQuiz();
+  }, []);
+
+  // ==========================
+  // handlers space
+  // ===========================
   const nextQuestion = () => {
     if (filteredQuestions.length > 0) {
       const newIndex = Math.floor(Math.random() * filteredQuestions.length);
       setCurrentIndex(newIndex);
       setIsCorrect(null);
+      userTakeQuiz();
     }
   };
 
-  const handleAnswer = (userAnswer: string) => {
+  const handleAnswer = async (userAnswer: string) => {
     if (currentQuestion && userAnswer === currentQuestion.correct_answer) {
       setIsCorrect(true);
       // TODO: Add token rewards logic here
@@ -78,8 +87,21 @@ export const useQuizProgress = () => {
     } else {
       setIsCorrect(false);
       console.log('Incorrect');
+
+      setTimeout(() => {
+        nextQuestion();
+      }, 1000);
     }
   };
 
-  return { handleAnswer, nextQuestion, isCorrect, currentQuestion, filteredQuestions, options };
+  const userTakeQuiz = async () => {
+    if (!actor) return;
+    await actor?.userTakeTheQuiz();
+    // Fetch the updated energy
+    const updatedEnergy = await actor?.getEnergy();
+    setCurrentEnergy(updatedEnergy);
+    console.log('user energy; ', currentEnergy);
+  };
+
+  return { handleAnswer, nextQuestion, isCorrect, currentQuestion, filteredQuestions, options, userTakeQuiz };
 };

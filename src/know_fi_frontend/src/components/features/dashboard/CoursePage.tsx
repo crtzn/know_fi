@@ -11,7 +11,7 @@ export function CourseCard() {
     <div className="flex flex-col gap-5">
       <div className="text-4xl font-bold">Course</div>
       <div>
-        <Card className="rounded-lg transition-all duration-200 hover:-translate-y-2 hover:translate-x-2 hover:shadow-[-10px_10px_0px_rgba(0,0,0,1)]">
+        <Card className="rounded-none transition-all duration-200 hover:-translate-y-2 hover:translate-x-2 hover:shadow-[-10px_10px_0px_rgba(0,0,0,1)]">
           <CardHeader></CardHeader>
           <CardContent>
             <div className="flex flex-col items-center gap-72">

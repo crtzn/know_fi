@@ -14,7 +14,7 @@ export function CoursesCard() {
           <div className="flex flex-col gap-72">
             <div className="flex w-full text-4xl font-bold">
               <div className="">
-                Trading 101 <br /> By Udemy
+                Course 1 <br /> By KnowFi
               </div>
               <div className="grow"></div>
               <div>

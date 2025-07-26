@@ -13,7 +13,7 @@ const chartData = [
   { month: 'Pedro', desktop: 305, mobile: 200, tablet: 90 },
   { month: 'Tanggol', desktop: 237, mobile: 120, tablet: 90 },
   { month: 'skibidi', desktop: 73, mobile: 190, tablet: 90 },
-  { month: 'nigg', desktop: 209, mobile: 130, tablet: 90 },
+  { month: 'david', desktop: 209, mobile: 130, tablet: 90 },
 ];
 
 const chartConfig = {
@@ -36,7 +36,7 @@ export function AnalyticsGraph() {
     <div className="flex flex-col gap-5">
       <div className="text-4xl font-bold">Analytics</div>
       <Link href={'/analytics'}>
-        <Card>
+        <Card className="h-[27.7rem] rounded-none">
           <CardHeader></CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig}>

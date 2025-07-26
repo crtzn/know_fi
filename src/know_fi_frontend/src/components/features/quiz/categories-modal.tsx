@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -20,7 +20,7 @@ interface CategoryFormData {
 }
 
 export default function CategoriesModal() {
-  const { categories, getUserCategories } = UserProfile();
+  const { categories, getUserCategories, currentEnergy } = UserProfile();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const { actor } = useAuth();
   const route = useRouter();
@@ -71,7 +71,13 @@ export default function CategoriesModal() {
                   Cancel
                 </Button>
               </DialogClose>
-              <Button type="submit" className="w-32" onClick={handleSubmitCategories}>
+              <Button
+                type="submit"
+                className="w-32"
+                onClick={() => {
+                  handleSubmitCategories();
+                }}
+              >
                 Proceed
               </Button>
             </div>

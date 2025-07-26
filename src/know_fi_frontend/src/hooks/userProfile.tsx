@@ -11,7 +11,7 @@ import { useAuth } from '@/hooks/useAuth';
 export const UserProfile = () => {
   const { actor } = useAuth();
   const [categories, setCategories] = useState<string[]>([]);
-  const [energy, setEnergy] = useState(0);
+  const [currentEnergy, setCurrentEnergy] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -30,9 +30,9 @@ export const UserProfile = () => {
   const getUserEnergy = useCallback(async () => {
     setLoading(true);
     const energy = await actor?.getEnergy();
-    setEnergy(energy);
+    setCurrentEnergy(energy);
     setLoading(false);
   }, [actor]);
 
-  return { energy, categories, getUserCategories, getUserEnergy, loading };
+  return { currentEnergy, setCurrentEnergy, categories, getUserCategories, getUserEnergy, loading };
 };
