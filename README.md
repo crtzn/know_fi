@@ -1,6 +1,10 @@
 # `know_fi`
 
-Welcome to your new `know_fi` project and to the Internet Computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+Welcome to your## 🗺️ Project Roadmap (KnowMAP)
+
+![KnowMAP Roadmap](./docs/roadmap.png)
+
+KnowFi is being developed in phases, with a clear vision for future growth and features. Here's an overview of our current and upcoming milestones:w `know_fi` project and to the Internet Computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
 
 ---
 
@@ -174,3 +178,5 @@ Pull requests and suggestions are welcome! For major changes, please open an iss
 
 **KnowFi: Where Knowledge and Finance Intertwine.**
 Empowering the next generation of Web3 learners and builders.
+
+![KnowFi - Learn, Earn, Share & Shine](./docs/thank-you.png)
