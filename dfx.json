@@ -1,18 +1,19 @@
 {
   "canisters": {
-    "know_fi_backend": {
-      "main": "src/know_fi_backend/main.mo",
+    "profile": {
+      "main": "src/know_fi_backend/profile/src/main.mo",
+      "type": "motoko"
+    },
+    "quiz": {
+      "main": "src/know_fi_backend/quiz/src/main.mo",
       "type": "motoko"
     },
     "know_fi_frontend": {
-      "dependencies": [
-        "know_fi_backend"
-      ],
-      "source": [
-        "src/know_fi_frontend/out"
-      ],
-      "type": "assets"
+      "source": ["src/know_fi_frontend/out"],
+      "type": "assets",
+      "dependencies": ["profile", "quiz"]
     },
+
     "internet_identity": {
       "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
       "type": "custom",
