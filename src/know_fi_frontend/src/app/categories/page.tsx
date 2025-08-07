@@ -37,8 +37,8 @@ const FormSchema = z.object({
 });
 
 function Page() {
-  const [selectedCategories, setSelectedCategories] = useState<String[]>([]);
-  const { actor, isAuthenticated } = useAuth();
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const { actors, isAuthenticated } = useAuth();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -48,9 +48,9 @@ function Page() {
   const route = useRouter();
 
   const handleSubmit = async () => {
-    if (!actor) return null;
-    await actor.setCategories(selectedCategories);
-    console.log(selectedCategories);
+    if (!actors.quiz) return null;
+    await actors.quiz?.setCategories(selectedCategories);
+    console.log('You categories: ', selectedCategories);
     route.push('/');
   };
 
@@ -63,7 +63,7 @@ function Page() {
   };
 
   const getCategories = async () => {
-    const categories = await actor?.getCategories();
+    const categories = await actors.quiz?.getCategories();
     console.log(categories);
   };
 

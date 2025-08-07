@@ -5,7 +5,6 @@ import { Inter } from 'next/font/google';
 
 import { ProtectedRoute } from '@/components/features/ProtectedRoute';
 import Sidebar from '@/components/features/sidebar/sidebar';
-import Menu from '@/components/features/sidebarMenu';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { isDevMode } from '@/core/utils';

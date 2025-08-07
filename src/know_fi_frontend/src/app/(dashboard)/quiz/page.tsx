@@ -10,8 +10,13 @@ import { useAuth } from '@/hooks/useAuth';
 import { useQuizProgress } from '@/hooks/useQuizProgress';
 import coinIcon from '@/public/assets/icon-coin.svg';
 
+interface QuizResult {
+  level: string;
+  isCorrect: boolean;
+}
+
 export default function Quiz() {
-  const { actor } = useAuth();
+  const { actors } = useAuth();
   const { isCorrect, currentQuestion, nextQuestion, handleAnswer, options } = useQuizProgress();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [timeLeft, setTimeLeft] = useState(20); // 20 seconds timer
@@ -22,12 +27,13 @@ export default function Quiz() {
   const [removeUsed, setRemoveUsed] = useState(false);
   const [isFrozen, setIsFrozen] = useState(false);
   const [hiddenOptions, setHiddenOptions] = useState<number[]>([]);
+  const [answer, setAnswer] = useState<QuizResult[]>([]);
 
   // For debugging, just checking what the user current progress.
   useEffect(() => {
     console.log('Current Question:  ', currentQuestion);
     const fetchCategories = async () => {
-      const categories = await actor?.getUserQuizCategories();
+      const categories = await actors.quiz?.getUserQuizCategories();
     };
     fetchCategories();
     console.log('user select: ', selectedOption);
@@ -81,6 +87,8 @@ export default function Quiz() {
     setHiddenOptions(toHide);
   };
 
+  const getResult = () => {};
+
   if (!currentQuestion) return <div>Loading...</div>;
 
   return (
@@ -88,7 +96,7 @@ export default function Quiz() {
       {/* Timer Progress Bar & Power-ups */}
 
       <div className="mb-4 flex items-center gap-4">
-        <p className="font-medium">Level: {currentQuestion?.difficulty}</p>
+        <p className="font-medium">Level: {currentQuestion?.difficult}</p>
         <span className="separator">|</span>
         <div className="flex gap-3">
           <Image src={coinIcon} alt="coin_icon" />

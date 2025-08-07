@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import { QuizData } from '@/core/types/quizData.types';
 import { shuffleArray } from '@/core/utils';
 import { useAuth } from '@/hooks/useAuth';
 import { quizData } from '@/providers/lib/quizData';
@@ -7,13 +8,13 @@ import { quizData } from '@/providers/lib/quizData';
 import { UserProfile } from './userProfile';
 
 export const useQuizProgress = () => {
-  const { actor } = useAuth();
+  const { actors } = useAuth();
   const { setCurrentEnergy, currentEnergy } = UserProfile();
 
   const [categories, setCategories] = useState<string[][]>([]);
   const [filteredQuestions, setFilteredQuestions] = useState<any[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [currentQuestion, setCurrentQuestion] = useState<any>(null);
+  const [currentQuestion, setCurrentQuestion] = useState<QuizData>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [options, setOptions] = useState<string[]>([]);
 
@@ -26,14 +27,14 @@ export const useQuizProgress = () => {
   // Fetch user categories
   useEffect(() => {
     const fetchUserQuizCategories = async () => {
-      if (actor && actor.getUserQuizCategories) {
-        const userCategories = await actor.getUserQuizCategories();
+      if (actors.quiz && actors.quiz.getUserQuizCategories) {
+        const userCategories = await actors.quiz.getUserQuizCategories();
         console.log('user choice categories:', userCategories);
         setCategories(userCategories || []);
       }
     };
     fetchUserQuizCategories();
-  }, [actor]);
+  }, [actors]);
 
   // Filter questions when categories change
   useEffect(() => {
@@ -59,10 +60,6 @@ export const useQuizProgress = () => {
     }
   }, [filteredQuestions, currentIndex]);
 
-  useEffect(() => {
-    userTakeQuiz();
-  }, []);
-
   // ==========================
   // handlers space
   // ===========================
@@ -71,37 +68,77 @@ export const useQuizProgress = () => {
       const newIndex = Math.floor(Math.random() * filteredQuestions.length);
       setCurrentIndex(newIndex);
       setIsCorrect(null);
-      userTakeQuiz();
     }
   };
 
+  /**
+   * Need to get the user answers, now if correct need ko makuha if anong level, then is correct
+   */
+
   const handleAnswer = async (userAnswer: string) => {
-    if (currentQuestion && userAnswer === currentQuestion.correct_answer) {
-      setIsCorrect(true);
-      // TODO: Add token rewards logic here
-      console.log('Correct');
+    if (!currentQuestion) return;
 
-      setTimeout(() => {
-        nextQuestion();
-      }, 2000);
-    } else {
-      setIsCorrect(false);
-      console.log('Incorrect');
+    const isCorrect = userAnswer === currentQuestion.correct_answer;
 
-      setTimeout(() => {
-        nextQuestion();
-      }, 1000);
+    // Map your question's level to the Motoko variant
+    let levelVariant;
+    switch (currentQuestion.difficult) {
+      case 'easy':
+        levelVariant = { easy: null };
+        break;
+      case 'medium':
+        levelVariant = { medium: null };
+        break;
+      case 'hard':
+        levelVariant = { hard: null };
+        break;
+      default:
+        levelVariant = { easy: null }; // fallback
     }
+
+    // Build the answer array (for a single question)
+    const answers = [{ level: levelVariant, isCorrect }];
+
+    // Call the backend
+    if (actors.quiz && actors.quiz.submitQuiz) {
+      try {
+        const reward = await actors.quiz.submitQuiz(answers);
+        console.log('Reward received:', reward);
+      } catch (e) {
+        console.error('Error submitting quiz:', e);
+      }
+    }
+
+    setIsCorrect(isCorrect);
+
+    setTimeout(
+      () => {
+        nextQuestion();
+      },
+      isCorrect ? 2000 : 1000,
+    );
   };
 
   const userTakeQuiz = async () => {
-    if (!actor) return;
-    await actor?.userTakeTheQuiz();
+    if (!actors.quiz) return;
+    await actors.quiz?.userTakeTheQuiz();
     // Fetch the updated energy
-    const updatedEnergy = await actor?.getEnergy();
-    setCurrentEnergy(updatedEnergy);
+    const updatedEnergy = await actors.quiz?.getEnergy();
+    setCurrentEnergy(Number(updatedEnergy));
     console.log('user energy; ', currentEnergy);
   };
 
-  return { handleAnswer, nextQuestion, isCorrect, currentQuestion, filteredQuestions, options, userTakeQuiz };
+  /**
+   *
+   * Instead this logic for decrement the userEnergy, why not,
+   * Every submit. So once the users submit the energy will be deduct
+   * Then in the submit will print the users answers if correct then what level
+   *
+   * OR
+   *
+   * Maybe I will create function to get the result, then will store to the backend
+   * So i need to get how many wins, what levels so yeah!
+   */
+
+  return { handleAnswer, nextQuestion, isCorrect, currentQuestion, filteredQuestions, options };
 };

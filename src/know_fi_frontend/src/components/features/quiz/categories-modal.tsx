@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -22,7 +22,7 @@ interface CategoryFormData {
 export default function CategoriesModal() {
   const { categories, getUserCategories, currentEnergy } = UserProfile();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const { actor } = useAuth();
+  const { actors } = useAuth();
   const route = useRouter();
   const handleCategoryClick = (category: string) => {
     setSelectedCategories((prev) =>
@@ -31,9 +31,9 @@ export default function CategoriesModal() {
   };
 
   const handleSubmitCategories = async () => {
-    if (!actor) return;
+    if (!actors.quiz) return;
     // get selectedCategories, then will pass to the backend all selected categories
-    await actor?.setUsersQuizCategories(selectedCategories);
+    await actors.quiz?.setUsersQuizCategories(selectedCategories);
     console.log('LIST OF SELECTED CATEGORIES TO TAKE THE QUIZ: ', selectedCategories);
     route.push('/quiz');
   };

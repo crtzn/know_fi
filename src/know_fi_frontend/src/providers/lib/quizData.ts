@@ -11,7 +11,7 @@ export const quizData = [
     correct_answer: 'To build a decentralized, scalable blockchain for running applications',
     explanation:
       'The Internet Computer, developed by DFINITY, aims to extend the functionality of the public internet by providing a decentralized blockchain platform where developers can build and deploy scalable, secure applications and smart contracts, known as canisters.',
-    difficulty: 'Easy',
+    difficulty: 'easy',
     token_reward: 0.5,
     category: 'Internet Computer Protocol',
   },
@@ -21,7 +21,7 @@ export const quizData = [
     correct_answer: 'Dominic Williams',
     explanation:
       'Dominic Williams founded the DFINITY Foundation, which launched the Internet Computer in May 2021. He is a key figure in its development and vision for decentralized computing.',
-    difficulty: 'Easy',
+    difficulty: 'easy',
     token_reward: 0.5,
     category: 'Internet Computer Protocol',
   },
@@ -36,7 +36,7 @@ export const quizData = [
     correct_answer: "A smart contract that runs on ICP's blockchain",
     explanation:
       'Canisters are the computational units on the Internet Computer, functioning as smart contracts that can store data, execute code, and serve web content, enabling developers to build scalable applications.',
-    difficulty: 'Medium',
+    difficulty: 'medium',
     token_reward: 1.5,
     category: 'Internet Computer Protocol',
   },
@@ -51,7 +51,7 @@ export const quizData = [
     correct_answer: 'Internet Computer Consensus (ICC)',
     explanation:
       'ICP uses a unique consensus mechanism called Internet Computer Consensus (ICC), which combines cryptographic techniques and a threshold relay to achieve fast, secure, and scalable consensus across its decentralized network.',
-    difficulty: 'Medium',
+    difficulty: 'medium',
     token_reward: 1.5,
     category: 'Internet Computer Protocol',
   },
@@ -66,7 +66,7 @@ export const quizData = [
     correct_answer: 'It governs the Internet Computer through decentralized voting',
     explanation:
       'The Network Nervous System (NNS) is ICP’s decentralized governance system, where token holders stake ICP to vote on proposals that determine network upgrades, canister management, and other operational decisions.',
-    difficulty: 'Hard',
+    difficulty: 'hard',
     token_reward: 3,
     category: 'Internet Computer Protocol',
   },
@@ -81,7 +81,7 @@ export const quizData = [
     correct_answer: 'It uses orthogonal persistence to store data directly in canisters',
     explanation:
       'ICP employs orthogonal persistence, allowing canisters to store and manage data directly on the blockchain, unlike traditional blockchains that often rely on off-chain storage or have limited data capacity.',
-    difficulty: 'Hard',
+    difficulty: 'hard',
     token_reward: 3,
     category: 'Internet Computer Protocol',
   },
@@ -127,7 +127,7 @@ export const quizData = [
     correct_answer: 'A market where prices are rising',
     explanation:
       'A bull market is characterized by rising asset prices, typically driven by investor optimism and increased buying activity. It’s the opposite of a bear market, where prices decline.',
-    difficulty: 'Easy',
+    difficulty: 'easy',
     token_reward: 0.5,
     category: 'Trading',
   },
@@ -142,7 +142,7 @@ export const quizData = [
     correct_answer: 'The ease of buying or selling an asset without affecting its price',
     explanation:
       'Liquidity refers to how easily an asset can be bought or sold in the market without causing significant price changes. High liquidity means tight spreads and fast trade execution.',
-    difficulty: 'Easy',
+    difficulty: 'easy',
     token_reward: 0.5,
     category: 'Trading',
   },
@@ -157,7 +157,7 @@ export const quizData = [
     correct_answer: 'To limit losses by selling an asset when it reaches a certain price',
     explanation:
       'A stop-loss order is a risk management tool that automatically sells an asset when its price falls to a predetermined level, helping traders limit potential losses.',
-    difficulty: 'Medium',
+    difficulty: 'medium',
     token_reward: 1.5,
     category: 'Trading',
   },
@@ -172,7 +172,7 @@ export const quizData = [
     correct_answer: 'To demand additional funds when a margin account falls below a threshold',
     explanation:
       'A margin call occurs when a broker demands that a trader deposits additional funds or securities into their margin account to meet the minimum maintenance margin, typically due to losses in leveraged positions.',
-    difficulty: 'Medium',
+    difficulty: 'medium',
     token_reward: 1.5,
     category: 'Trading',
   },
@@ -187,7 +187,7 @@ export const quizData = [
     correct_answer: 'Using historical price and volume data to predict future price movements',
     explanation:
       'Technical analysis involves analyzing past market data, such as price and volume, using charts and indicators (e.g., moving averages, RSI) to forecast future price trends.',
-    difficulty: 'Hard',
+    difficulty: 'hard',
     token_reward: 3,
     category: 'Trading',
   },
@@ -202,7 +202,7 @@ export const quizData = [
     correct_answer: 'Selling an asset you don’t own, expecting its price to fall',
     explanation:
       'Short selling involves borrowing an asset, selling it at the current price, and buying it back later at a lower price to return it, profiting from the price difference.',
-    difficulty: 'Hard',
+    difficulty: 'hard',
     token_reward: 3,
     category: 'Trading',
   },
@@ -248,7 +248,7 @@ export const quizData = [
     correct_answer: 'A named storage location for data that can be modified',
     explanation:
       'A variable is a named container in a program’s memory that holds data, which can be changed during execution, allowing developers to store and manipulate values.',
-    difficulty: 'Easy',
+    difficulty: 'easy',
     token_reward: 0.5,
     category: 'Programming',
   },
@@ -263,7 +263,7 @@ export const quizData = [
     correct_answer: 'Integrated Development Environment',
     explanation:
       'An IDE (Integrated Development Environment) is a software suite that provides tools like a code editor, debugger, and compiler to streamline software development.',
-    difficulty: 'Easy',
+    difficulty: 'easy',
     token_reward: 0.5,
     category: 'Programming',
   },
@@ -278,7 +278,7 @@ export const quizData = [
     correct_answer: 'To execute a block of code a specific number of times',
     explanation:
       'A for loop is a control structure used to repeat a block of code a predetermined number of times, often used for iterating over arrays or ranges.',
-    difficulty: 'Medium',
+    difficulty: 'medium',
     token_reward: 1.5,
     category: 'Programming',
   },
@@ -293,7 +293,7 @@ export const quizData = [
     correct_answer: 'A paradigm that organizes code into objects with properties and methods',
     explanation:
       'OOP is a programming paradigm that uses objects, which combine data (properties) and behavior (methods), to model real-world entities and promote code reuse.',
-    difficulty: 'Medium',
+    difficulty: 'medium',
     token_reward: 1.5,
     category: 'Programming',
   },
@@ -308,7 +308,7 @@ export const quizData = [
     correct_answer: 'A function that retains access to its lexical scope even when executed outside it',
     explanation:
       'A closure is a function that remembers the variables in its outer scope, even after the outer function has finished executing, allowing for data encapsulation.',
-    difficulty: 'Hard',
+    difficulty: 'hard',
     token_reward: 3,
     category: 'Programming',
   },
@@ -323,7 +323,7 @@ export const quizData = [
     correct_answer: 'Allowing different data types to share the same interface or behavior',
     explanation:
       'Polymorphism, a core OOP concept, allows objects of different classes to be treated as instances of a common superclass, enabling shared behaviors through methods like overriding.',
-    difficulty: 'Hard',
+    difficulty: 'hard',
     token_reward: 3,
     category: 'Programming',
   },
@@ -369,7 +369,7 @@ export const quizData = [
     correct_answer: 'To create systems that can perform tasks requiring human intelligence',
     explanation:
       'AI aims to develop systems that can mimic human cognitive abilities, such as reasoning, learning, and problem-solving, to perform tasks like image recognition or natural language processing.',
-    difficulty: 'Easy',
+    difficulty: 'easy',
     token_reward: 0.5,
     category: 'Artificial Intelligence',
   },
@@ -384,7 +384,7 @@ export const quizData = [
     correct_answer: 'A computational model inspired by the human brain',
     explanation:
       'A neural network is a series of algorithms that mimic the human brain’s structure, using layers of interconnected nodes to process data and learn patterns for tasks like classification.',
-    difficulty: 'Easy',
+    difficulty: 'easy',
     token_reward: 0.5,
     category: 'Artificial Intelligence',
   },
@@ -399,7 +399,7 @@ export const quizData = [
     correct_answer: 'Training a model with labeled data to make predictions',
     explanation:
       'Supervised learning involves training an AI model on a dataset with input-output pairs (labeled data) to predict outcomes, such as classifying images or predicting prices.',
-    difficulty: 'Medium',
+    difficulty: 'medium',
     token_reward: 1.5,
     category: 'Artificial Intelligence',
   },
@@ -414,7 +414,7 @@ export const quizData = [
     correct_answer: 'A model learning too much from training data, failing to generalize',
     explanation:
       'Overfitting occurs when an AI model learns the training data too well, including noise, resulting in poor performance on new, unseen data due to lack of generalization.',
-    difficulty: 'Medium',
+    difficulty: 'medium',
     token_reward: 1.5,
     category: 'Artificial Intelligence',
   },
@@ -429,7 +429,7 @@ export const quizData = [
     correct_answer: 'To measure the accuracy of a model’s predictions',
     explanation:
       'A loss function quantifies the difference between a model’s predicted outputs and the actual target values, guiding the optimization process during training to minimize errors.',
-    difficulty: 'Hard',
+    difficulty: 'hard',
     token_reward: 3,
     category: 'Artificial Intelligence',
   },
@@ -444,7 +444,7 @@ export const quizData = [
     correct_answer: 'Learning through trial and error to maximize a reward',
     explanation:
       'Reinforcement learning involves an agent learning to make decisions by trying actions in an environment to maximize a cumulative reward, used in applications like game playing or robotics.',
-    difficulty: 'Hard',
+    difficulty: 'hard',
     token_reward: 3,
     category: 'Artificial Intelligence',
   },

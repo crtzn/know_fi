@@ -2,12 +2,12 @@
 
 import { Loader } from 'lucide-react';
 import Image from 'next/image';
+import { useEffect } from 'react';
 
 import { AnalyticsGraph } from '@/components/features/dashboard/AnalyticsPage';
 import { CourseCard } from '@/components/features/dashboard/CoursePage';
 import { MarketplaceCard } from '@/components/features/dashboard/MarketplacePage';
 import { QuizCard } from '@/components/features/dashboard/QuizPage';
-import { Separator } from '@/components/ui/separator';
 import useClient from '@/core/hooks/utils/useClient';
 import { UserProfile } from '@/hooks/userProfile';
 import EnergyImg from '@/public/assets/enery-img.svg';
@@ -15,7 +15,11 @@ import CoinIcon from '@/public/assets/icon-coin.svg';
 
 export default function Home() {
   const { isClient } = useClient();
-  const { currentEnergy, loading } = UserProfile();
+  const { currentEnergy, loading, userToken } = UserProfile();
+
+  useEffect(() => {
+    console.log('User Token Balances: ', userToken);
+  }, []);
 
   return (
     <main>
@@ -38,7 +42,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-1">
                 <Image src={CoinIcon} alt="Token" width={32} height={32} />
-                <p className="text-2xl font-bold">12.3</p>
+                <p className="text-2xl font-bold">{userToken}</p>
               </div>
             </div>
           </div>

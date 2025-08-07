@@ -1,5 +1,9 @@
 {
   "canisters": {
+    "auth": {
+      "main": "src/know_fi_backend/auth/main.mo",
+      "type": "motoko"
+    },
     "profile": {
       "main": "src/know_fi_backend/profile/src/main.mo",
       "type": "motoko"
@@ -26,6 +30,7 @@
       "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
     }
   },
+
   "defaults": {
     "build": {
       "args": "",

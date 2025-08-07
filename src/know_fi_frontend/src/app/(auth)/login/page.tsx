@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 
 const Page = () => {
-  const { login, logout, isAuthenticated, actor } = useAuth();
+  const { login, logout, isAuthenticated, actors } = useAuth();
   const route = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -21,17 +21,17 @@ const Page = () => {
      * before proceeding, otherwise it will detect them as empty/null initially.
      */
     let retries = 20;
-    while ((!actor || !isAuthenticated) && retries > 0) {
+    while ((!actors || !isAuthenticated) && retries > 0) {
       await new Promise((res) => setTimeout(res, 150));
       retries--;
     }
 
-    if (!actor || !isAuthenticated) {
+    if (!actors || !isAuthenticated) {
       setLoading(false);
       return;
     }
 
-    const categories = await actor.getCategories();
+    const categories = await actors.quiz.getCategories();
 
     if (Object.values(categories).length > 0) {
       route.push('/');

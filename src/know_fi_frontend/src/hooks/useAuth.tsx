@@ -1,8 +1,11 @@
 import { AuthClient } from '@dfinity/auth-client';
+import { Principal } from '@dfinity/principal';
 import { useCallback, useEffect, useState } from 'react';
 
-import { createActor } from '../../../declarations/know_fi_backend';
-import { canisterId } from '../../../declarations/know_fi_backend/index.js';
+// Import the generated actor creators and canister IDs for each canister
+import { canisterId as authCanisterId, createActor as createAuthActor } from '../../../declarations/auth';
+import { createActor as createProfileActor, canisterId as profileCanisterId } from '../../../declarations/profile';
+import { createActor as createQuizActor, canisterId as quizCanisterId } from '../../../declarations/quiz';
 
 const network = process.env.NEXT_PUBLIC_DFX_NETWORK;
 const identityProvider =
@@ -13,47 +16,59 @@ const identityProvider =
 const isLocal = process.env.DFX_NETWORK !== 'ic';
 const host = isLocal ? 'http://localhost:4943' : 'https://icp0.io';
 
+type Actors = {
+  auth: ReturnType<typeof createAuthActor>;
+  quiz: ReturnType<typeof createQuizActor>;
+  profile: ReturnType<typeof createProfileActor>;
+};
+
 export const useAuth = () => {
-  const [actor, setActor] = useState(null);
+  const [actors, setActors] = useState<Actors | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authClient, setAuthClient] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [userPrincipal, setUserPrincipal] = useState<Principal | null>(null);
 
-  const updateActor = useCallback(async () => {
+  const updateActors = useCallback(async () => {
     setIsLoading(true);
     const authClient = await AuthClient.create();
     const identity = authClient.getIdentity();
-    const actorInstance = createActor(canisterId, {
-      agentOptions: {
-        identity,
-        host,
-      },
+
+    setUserPrincipal(identity.getPrincipal());
+
+    // Create an actor for each canister using the same identity and host
+    const authActor = createAuthActor(authCanisterId, { agentOptions: { identity, host } });
+    const quizActor = createQuizActor(quizCanisterId, { agentOptions: { identity, host } });
+    const profileActor = createProfileActor(profileCanisterId, { agentOptions: { identity, host } });
+
+    setActors({
+      auth: authActor,
+      quiz: quizActor,
+      profile: profileActor,
     });
 
-    const authenticated = await authClient.isAuthenticated();
+    setIsAuthenticated(await authClient.isAuthenticated());
     setAuthClient(authClient);
-    setActor(actorInstance);
-    setIsAuthenticated(authenticated);
     setIsLoading(false);
   }, []);
 
   useEffect(() => {
-    updateActor();
-  }, [updateActor]);
+    updateActors();
+  }, [updateActors]);
 
   const login = async () => {
     if (!authClient) return;
     await authClient.login({
       identityProvider,
-      onSuccess: updateActor,
+      onSuccess: updateActors,
     });
   };
 
   const logout = async () => {
     if (!authClient) return;
     await authClient.logout();
-    updateActor();
+    updateActors();
   };
 
-  return { login, logout, isLoading, isAuthenticated, authClient, actor };
+  return { login, logout, isLoading, isAuthenticated, authClient, actors, userPrincipal };
 };
