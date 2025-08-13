@@ -3,8 +3,8 @@ import '@/styles/globals.css';
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+import { HeaderDemo } from '@/components/features/header/header';
 import { ProtectedRoute } from '@/components/features/ProtectedRoute';
-import Sidebar from '@/components/features/sidebar/sidebar';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { isDevMode } from '@/core/utils';
@@ -42,12 +42,17 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className}`}>
         <ReactQueryProvider>
           <TooltipProvider>
-            <ProtectedRoute>
-              <div className="grid h-screen w-full lg:grid-cols-[250px_1fr]">
-                <Sidebar />
-                <div className="w-full overflow-auto px-[12%] pt-14">{children}</div>
+            {/* <ProtectedRoute> */}
+            <div className="relative h-screen w-full">
+              {/* keep header fixed at top */}
+              <div className="fixed left-0 top-0 z-50 w-full">
+                <HeaderDemo />
               </div>
-            </ProtectedRoute>
+
+              {/* scrollable content area: offset for header height (70px used here) */}
+              <div className="hide-scrollbar w-full overflow-auto pt-[58px]">{children}</div>
+            </div>
+            {/* </ProtectedRoute> */}
           </TooltipProvider>
         </ReactQueryProvider>
         <Toaster />

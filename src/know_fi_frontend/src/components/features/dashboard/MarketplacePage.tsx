@@ -1,41 +1,17 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 
-import sampleNft from '@/components/common/icons/sampleNft.png';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-
-export const description = 'A multiple bar chart';
+import { Card, CardContent } from '@/components/ui/card';
 
 export function MarketplaceCard() {
   return (
-    <div className="flex flex-col gap-5">
-      <div className="text-4xl font-bold">Marketplace</div>
-      <Link href={'/marketplace'}>
-        <Card className="rounded-none">
-          <CardHeader>
-            <CardTitle className="text-4xl font-bold">Featured NFTs</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-col gap-5">
-              <div className="flex h-64 w-full">
-                <div className="flex w-5/12 items-center justify-center">
-                  <Image src={sampleNft} alt="Logo" width={230} height={36} unoptimized />
-                </div>
-                <div className="flex w-7/12 items-start justify-start pb-2 text-3xl">
-                  NFT name: Sample NFT
-                  <br />
-                  Rarity: LEGENDARY
-                </div>
-              </div>
-            </div>
-          </CardContent>
-          <CardFooter className="flex justify-end">
-            <div className="mb-2 text-4xl font-bold">buy and sell now</div>
-          </CardFooter>
-        </Card>
-      </Link>
-    </div>
+    <Link href={'/marketplace'}>
+      <Card className="size-full rounded-none transition-all duration-200 hover:-translate-x-2 hover:-translate-y-2 hover:shadow-[8px_8px_0px_rgba(0,0,0,1)]">
+        <CardContent className="flex size-full items-center justify-center">
+          <h1 className="text-4xl font-bold">Marketplace</h1>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }

@@ -33,26 +33,27 @@ const chartConfig = {
 
 export function AnalyticsGraph() {
   return (
-    <div className="flex flex-col gap-5">
-      <div className="text-4xl font-bold">Analytics</div>
-      <Link href={'/analytics'}>
-        <Card className="h-[27.7rem] rounded-none">
-          <CardHeader></CardHeader>
-          <CardContent>
-            <ChartContainer config={chartConfig}>
-              <BarChart accessibilityLayer data={chartData}>
-                <CartesianGrid vertical={true} />
-                <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
-                <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dashed" />} />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-                <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-                <Bar dataKey="tablet" fill="var(--color-tablet)" radius={4} />
-              </BarChart>
-            </ChartContainer>
-          </CardContent>
-          <CardFooter className="flex-col items-start gap-2 text-sm"></CardFooter>
-        </Card>
-      </Link>
-    </div>
+    <Link href={'/analytics'}>
+      <Card className="rounded-none transition-all duration-200 hover:-translate-x-2 hover:-translate-y-2 hover:shadow-[8px_8px_0px_rgba(0,0,0,1)]">
+        <CardHeader></CardHeader>
+        <CardContent>
+          <ChartContainer config={chartConfig}>
+            <BarChart accessibilityLayer data={chartData}>
+              <CartesianGrid vertical={true} />
+              <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
+              <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dashed" />} />
+              <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+              <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+              <Bar dataKey="tablet" fill="var(--color-tablet)" radius={4} />
+            </BarChart>
+          </ChartContainer>
+        </CardContent>
+        <CardFooter className="flex items-center justify-center gap-2 text-sm">
+          <Link href="/analytics" className="underline underline-offset-2 hover:text-purple-500">
+            View Full
+          </Link>
+        </CardFooter>
+      </Card>
+    </Link>
   );
 }
