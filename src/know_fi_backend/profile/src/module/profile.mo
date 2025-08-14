@@ -4,10 +4,7 @@ import Principal "mo:base/Principal";
 import Option "mo:base/Option";
 import Text "mo:base/Text";
 
-
-
 module {
-
     public func setProfile(profiles: Trie.Trie<Principal, ProfileType.Profile>, caller: Principal, profile:ProfileType.Profile) : Trie.Trie<Principal, ProfileType.Profile> {
         // type Key<K> = { hash : Hash.Hash; key : K }
         let key = { hash = Principal.hash(caller); key = caller };

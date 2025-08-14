@@ -42,17 +42,17 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className}`}>
         <ReactQueryProvider>
           <TooltipProvider>
-            {/* <ProtectedRoute> */}
-            <div className="relative h-screen w-full">
-              {/* keep header fixed at top */}
-              <div className="fixed left-0 top-0 z-50 w-full">
-                <HeaderDemo />
-              </div>
+            <ProtectedRoute>
+              <div className="relative h-screen w-full">
+                {/* keep header fixed at top */}
+                <div className="fixed left-0 top-0 z-50 w-full">
+                  <HeaderDemo />
+                </div>
 
-              {/* scrollable content area: offset for header height (70px used here) */}
-              <div className="hide-scrollbar w-full overflow-auto pt-[58px]">{children}</div>
-            </div>
-            {/* </ProtectedRoute> */}
+                {/* scrollable content area: offset for header height (70px used here) */}
+                <div className="hide-scrollbar w-full overflow-auto pt-[58px]">{children}</div>
+              </div>
+            </ProtectedRoute>
           </TooltipProvider>
         </ReactQueryProvider>
         <Toaster />

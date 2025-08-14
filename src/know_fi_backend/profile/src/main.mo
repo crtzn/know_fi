@@ -1,10 +1,9 @@
 import ProfileModule "module/profile";
 import Trie "mo:base/Trie";
 
-//Types
 import ProfileType "./types/profile_types";
 
-persistent actor Profile {
+persistent actor class Profile () {
     private var profiles = Trie.empty<Principal, ProfileType.Profile>();
 
 

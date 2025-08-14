@@ -11,11 +11,11 @@ import Timer "mo:base/Timer";
 import QuizModule "./module/quiz";
 
 
-persistent actor Quiz {
+persistent actor class Quiz () {
     private var users: AssocList.AssocList<Principal, [Text]> = List.nil();
     private var energies : [(Principal, Int)] = [];
     private var virtual_token : [(Principal, Int)] = []; //for the mvp, we use virtual token. But soon integrate this to real token!
-    private var userCategories: AssocList.AssocList<Principal, [Text]> = List.nil();
+    private var _userCategories: AssocList.AssocList<Principal, [Text]> = List.nil();
     let max_energy = 25;
 
     type QuizLevel = {
@@ -133,5 +133,9 @@ persistent actor Quiz {
       case (?entry) { entry.1 };
     }
   };
+
+    public func addTokenReward(user: Principal, reward: Int) : async () {
+        updateTokens(user, reward);
+    };
 
 }

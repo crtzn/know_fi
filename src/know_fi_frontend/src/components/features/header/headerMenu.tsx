@@ -42,7 +42,7 @@ function Header1() {
     },
     {
       title: 'Community',
-      href: '/community',
+      href: '/forum',
     },
   ];
 

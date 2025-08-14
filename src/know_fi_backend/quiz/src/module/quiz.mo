@@ -29,8 +29,6 @@ public func getEnergy(energies:[(Principal, Int)], user: Principal, maxEnergy: I
   ): ?[Text] {
     AssocList.find(users, caller, Principal.equal)
   };
-
-
 }
 
 

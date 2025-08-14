@@ -12,12 +12,19 @@
       "main": "src/know_fi_backend/quiz/src/main.mo",
       "type": "motoko"
     },
+    "forum": {
+      "main": "src/know_fi_backend/forum/main.mo",
+      "type": "motoko"
+    },
+    "quests": {
+      "main": "src/know_fi_backend/quests/main.mo",
+      "type": "motoko"
+    },
     "know_fi_frontend": {
       "source": ["src/know_fi_frontend/out"],
       "type": "assets",
-      "dependencies": ["profile", "quiz"]
+      "dependencies": ["profile", "quiz", "auth", "quests", "forum"]
     },
-
     "internet_identity": {
       "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
       "type": "custom",
@@ -30,11 +37,14 @@
       "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
     }
   },
-
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": "mops sources"
+  "networks": {
+    "staging": {
+      "providers": ["icp0.app"],
+      "type": "persistent"
+    },
+    "local": {
+      "type": "ephemeral",
+      "bind": "127.0.0.1:4943"
     }
   },
   "output_env_file": ".env",
