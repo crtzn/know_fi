@@ -1,20 +1,37 @@
 import React from 'react';
 
+import { Analytics } from '@/components/features/profile/analytics';
+import { Blank } from '@/components/features/profile/blank';
+import { Information } from '@/components/features/profile/information';
+import { ProfileCard } from '@/components/features/profile/profileCard';
+import { QuizHistory } from '@/components/features/profile/quiz_history';
+import { Socials } from '@/components/features/profile/socials';
+
 export default function profile() {
   return (
-    <div>
+    <div className="container">
       {/* Top part */}
-      <div className="mb-20 flex">
-        <div className="flex flex-col">
-          <h1 className="mb-5 text-5xl font-bold">Profile</h1>
-          <span>
-            This feature will be available in our Phase 2. Please visit <br /> website to view our porject roadmap.
-          </span>
+      <div className="container">
+        <div className="flex flex-col gap-10">
+          <div>
+            <ProfileCard />
+          </div>
+          <div className="flex gap-10">
+            {/* Left Column */}
+            <div className="flex flex-col gap-5">
+              <Information />
+              <Socials />
+              <QuizHistory />
+            </div>
+
+            {/* Right Column */}
+            <div className="flex w-full flex-col gap-5">
+              <Analytics />
+              <Blank />
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Graphs and charts section */}
-      <div className="flex size-full items-center justify-center text-5xl font-bold">Coming soon...</div>
     </div>
   );
 }
