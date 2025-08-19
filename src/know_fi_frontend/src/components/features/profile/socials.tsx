@@ -12,7 +12,7 @@ export function Socials() {
           <h1 className="bg-white px-2 text-xl font-bold tracking-wider">Socials</h1>
         </div>
 
-        <Card className="p-10">
+        <Card className="rounded-none p-10">
           <div className="flex w-full gap-4">
             <div className="cursor-pointer rounded p-2 hover:bg-gray-100">
               <X className="h-10 w-10" />

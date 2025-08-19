@@ -3,6 +3,7 @@ import React from 'react';
 import { Analytics } from '@/components/features/profile/analytics';
 import { Blank } from '@/components/features/profile/blank';
 import { Information } from '@/components/features/profile/information';
+import { PostBadges } from '@/components/features/profile/postBadges';
 import { ProfileCard } from '@/components/features/profile/profileCard';
 import { QuizHistory } from '@/components/features/profile/quiz_history';
 import { Socials } from '@/components/features/profile/socials';
@@ -28,6 +29,7 @@ export default function profile() {
             <div className="flex w-full flex-col gap-5">
               <Analytics />
               <Blank />
+              <PostBadges />
             </div>
           </div>
         </div>

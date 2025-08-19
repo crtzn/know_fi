@@ -11,7 +11,7 @@ export function Blank() {
           <h1 className="bg-white px-2 text-xl font-bold tracking-wider"></h1>
         </div>
 
-        <Card>
+        <Card className="rounded-none">
           <CardHeader>
             <CardTitle></CardTitle>
             <CardDescription></CardDescription>

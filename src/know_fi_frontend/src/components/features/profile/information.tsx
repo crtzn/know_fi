@@ -13,7 +13,7 @@ export function Information() {
           <h1 className="bg-white px-2 text-xl font-bold tracking-wider">Information</h1>
         </div>
 
-        <Card>
+        <Card className="rounded-none">
           <CardHeader>
             <CardTitle className="font-mono text-xl font-bold">Adrian Paul S. Orendain</CardTitle>
             <CardDescription>

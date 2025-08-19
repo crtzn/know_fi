@@ -43,7 +43,7 @@ export function Analytics() {
           <h1 className="bg-white px-2 text-xl font-bold tracking-wider">Analytics</h1>
         </div>
 
-        <Card>
+        <Card className="rounded-none">
           <CardHeader>
             <CardTitle></CardTitle>
             <CardDescription></CardDescription>
