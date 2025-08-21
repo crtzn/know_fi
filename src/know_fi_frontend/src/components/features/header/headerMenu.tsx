@@ -49,7 +49,7 @@ function Header1() {
   const [isOpen, setOpen] = useState(false);
   return (
     <header className="fixed left-0 top-0 z-40 w-full border-b-2 border-black bg-[#E0C2FF] shadow-[5px_5px_0px_rgba(0,0,0,1)]">
-      <div className="container relative mx-auto flex min-h-16 flex-row items-center gap-3 px-20">
+      <div className="container relative mx-auto flex min-h-16 flex-row items-center gap-3">
         <Link href={'/'}>
           <Image src={know_fi_logo} alt="Logo" width={48} height={48} unoptimized className="size-auto" />
         </Link>

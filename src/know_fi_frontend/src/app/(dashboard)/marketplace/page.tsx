@@ -1,6 +1,9 @@
 'use client';
 
+import { D } from '@tanstack/react-query-devtools/build/legacy/ReactQueryDevtools-Cn7cKi7o';
+
 import useClient from '@/core/hooks/utils/useClient';
+import marketplace from '@/public/assets/marketplace.svg';
 
 export default function Home() {
   const { isClient } = useClient();
@@ -10,17 +13,23 @@ export default function Home() {
       {isClient && (
         <div>
           {/* Top part */}
-          <div className="mb-20 flex">
-            <div className="flex flex-col">
-              <h1 className="mb-5 text-5xl font-bold">Marketplace</h1>
-              <span>
-                This feature will be available in our Phase 2. Please visit <br /> website to view our porject roadmap.
-              </span>
-            </div>
+          <div
+            className="flex w-full items-center justify-center"
+            style={{
+              backgroundImage: `url(${marketplace.src})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              minHeight: '200px',
+              position: 'relative',
+            }}
+          >
+            <h2 className="text-center text-3xl font-bold text-white">MARKETPLACE</h2>
           </div>
 
           {/* Graphs and charts section */}
-          <div className="flex size-full items-center justify-center text-5xl font-bold">Coming soon...</div>
+          <div className="flex h-screen items-center justify-center text-5xl font-bold">
+            <p className="rounded-lg border-4 border-black p-4">Coming soon...</p>
+          </div>
         </div>
       )}
     </main>

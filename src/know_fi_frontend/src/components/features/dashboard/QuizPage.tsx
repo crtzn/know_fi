@@ -13,8 +13,8 @@ export function QuizCard() {
   const { currentEnergy, loading } = UserProfile();
 
   return (
-    <Card className="h-80 rounded-none transition-all duration-200 hover:-translate-x-2 hover:-translate-y-2 hover:shadow-[8px_8px_0px_rgba(0,0,0,1)]">
-      <CardContent className="flex size-full items-center justify-center text-4xl font-bold">
+    <Card className="size-full transition-all duration-200 hover:-translate-x-2 hover:-translate-y-2 hover:shadow-[8px_8px_0px_rgba(0,0,0,1)]">
+      <CardContent className="flex size-full items-center justify-center p-4 text-4xl font-bold">
         <CategoriesModal />
       </CardContent>
     </Card>

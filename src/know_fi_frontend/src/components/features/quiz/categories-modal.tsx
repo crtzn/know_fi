@@ -40,7 +40,9 @@ export default function CategoriesModal() {
   return (
     <div>
       <Dialog>
-        <DialogTrigger onClick={getUserCategories}>Take Quiz</DialogTrigger>
+        <DialogTrigger onClick={getUserCategories}>
+          <span className="text-[#65009F]">KNOW</span>QUIZ
+        </DialogTrigger>
         <DialogContent className="max-w-2xl" onInteractOutside={(e) => e.preventDefault()}>
           <DialogHeader className="flex w-full items-center justify-center">
             <DialogTitle className="text-4xl text-[#3C005E]">Choose Category</DialogTitle>
