@@ -1,21 +1,13 @@
 'use client';
 
-import {
-  Facebook,
-  Handshake,
-  LucideIcon,
-  MessageCircleMore,
-  MessageCircleQuestionMark,
-  UserRoundPen,
-  X,
-} from 'lucide-react';
+import { Facebook, Handshake, MessageCircleMore, MessageCircleQuestionMark, UserRoundPen, X } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { useAuth } from '@/contexts/AuthContext';
 import useClient from '@/core/hooks/utils/useClient';
-import { useAuth } from '@/hooks/useAuth';
 import { useDailyClaim } from '@/hooks/useDailyClaim';
 import bannerImg from '@/public/assets/quest-banner.png';
 
@@ -170,7 +162,9 @@ export default function Home() {
                         isQuestCompleted ? 'cursor-not-allowed bg-gray-300' : 'bg-[#69FFB5]'
                       }`}
                     >
-                      {isQuestCompleted ? 'DONE' : `+${quest.reward} $KNF`}
+                      <Link href={quest.url} target="">
+                        {isQuestCompleted ? 'DONE' : `+${quest.reward} $KNF`}
+                      </Link>
                     </Button>
                   </Card>
                 </div>

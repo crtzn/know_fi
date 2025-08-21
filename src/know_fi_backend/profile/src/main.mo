@@ -11,8 +11,8 @@ persistent actor class Profile () {
      profiles := ProfileModule.setProfile(profiles, caller, profile);
     };
 
-    public shared ({ caller }) func updateProfile (userName: ?Text, bio: ?Text, github: ?Text, twitter: ?Text, linkedin: ?Text) : async () {
-        profiles := ProfileModule.updateProfile(profiles, caller, userName, bio, github, twitter, linkedin);
+    public shared ({ caller }) func updateProfile (name: ?Text, userName: ?Text, bio: ?Text, github: ?Text, twitter: ?Text, linkedin: ?Text) : async () {
+        profiles := ProfileModule.updateProfile(profiles, caller, name, userName, bio, github, twitter, linkedin);
     };
 
     public shared ({ caller }) func getProfile () : async ?ProfileType.Profile {

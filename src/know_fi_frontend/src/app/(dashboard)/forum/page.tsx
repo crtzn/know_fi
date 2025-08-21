@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function ForumPage() {
-  const { actors, isAuthenticated, isLoading: authLoading, login } = useAuth();
+  const { actors, isAuthenticated, isLoading: authLoading, login, getActor } = useAuth();
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [title, setTitle] = useState('');
@@ -14,31 +14,106 @@ export default function ForumPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
 
-  // Fetch all posts
-  const fetchPosts = async () => {
+  // Real-time polling states
+  const [isPolling, setIsPolling] = useState(true);
+  const [newPostsCount, setNewPostsCount] = useState(0);
+  const [lastUpdate, setLastUpdate] = useState(Date.now());
+  const [isTyping, setIsTyping] = useState(false);
+
+  // Fetch all posts with change detection
+  const fetchPosts = async (isPollingCall = false) => {
     if (!actors?.forum) return;
 
     try {
-      setIsLoading(true);
+      if (!isPollingCall) {
+        setIsLoading(true);
+      }
       setError('');
+
       const allPosts = await actors.forum.getAllPosts();
+
       // Sort posts by timestamp (newest first)
       const sortedPosts = [...allPosts].sort((a, b) => Number(b.timestamp) - Number(a.timestamp));
+
+      // Check if there are new posts (only during polling)
+      if (isPollingCall && posts.length > 0 && sortedPosts.length > posts.length) {
+        const newCount = sortedPosts.length - posts.length;
+        setNewPostsCount(newCount);
+
+        // Auto-clear notification after 5 seconds
+        setTimeout(() => setNewPostsCount(0), 5000);
+
+        // Optional: Show browser notification if user allows
+        if ('Notification' in window && Notification.permission === 'granted') {
+          new Notification(`${newCount} new post${newCount > 1 ? 's' : ''} in the forum!`);
+        }
+      }
+
       setPosts(sortedPosts);
+      setLastUpdate(Date.now());
     } catch (err) {
       console.error('Error fetching posts:', err);
-      setError('Failed to load posts. Please try again.');
+      if (!isPollingCall) {
+        setError('Failed to load posts. Please try again.');
+      }
     } finally {
-      setIsLoading(false);
+      if (!isPollingCall) {
+        setIsLoading(false);
+      }
     }
   };
 
   // Initial fetch when actor is available
   useEffect(() => {
     if (actors?.forum) {
-      fetchPosts();
+      fetchPosts(false);
     }
   }, [actors?.forum]);
+
+  // Smart polling for real-time updates
+  useEffect(() => {
+    if (!actors?.forum || !isPolling) return;
+
+    const pollForUpdates = async () => {
+      // Only poll if tab is visible and user is not typing
+      if (document.visibilityState === 'visible' && !isTyping && !isLoading) {
+        await fetchPosts(true);
+      }
+    };
+
+    // Start polling every 5 seconds
+    const interval = setInterval(pollForUpdates, 5000);
+
+    // Poll immediately when user comes back to tab
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible' && !isTyping && !isLoading) {
+        fetchPosts(true);
+      }
+    };
+
+    // Poll when user focuses window
+    const handleFocus = () => {
+      if (!isTyping && !isLoading) {
+        fetchPosts(true);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', handleFocus);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, [actors?.forum, isPolling, isTyping, isLoading, posts.length]);
+
+  // Request notification permission when component mounts
+  useEffect(() => {
+    if ('Notification' in window && Notification.permission === 'default') {
+      Notification.requestPermission();
+    }
+  }, []);
 
   // Handle post creation
   const handleSubmit = async (e) => {
@@ -60,7 +135,9 @@ export default function ForumPage() {
       setTitle('');
       setContent('');
       // Refresh posts after creating a new one
-      fetchPosts();
+      await fetchPosts(false);
+      // Clear any new posts notification since user just posted
+      setNewPostsCount(0);
     } catch (err) {
       console.error('Error creating post:', err);
       setError('Failed to create post. Please try again.');
@@ -95,7 +172,14 @@ export default function ForumPage() {
 
   return (
     <div className="container mx-auto max-w-5xl px-4 py-8">
-      <h1 className="mb-8 text-center text-3xl font-bold">Community Forum</h1>
+      {/* New Posts Notification */}
+      {newPostsCount > 0 && (
+        <div className="fixed right-4 top-4 z-50 animate-bounce rounded-lg bg-blue-500 px-4 py-2 text-white shadow-lg">
+          🎉 {newPostsCount} new post{newPostsCount > 1 ? 's' : ''}!
+        </div>
+      )}
+
+      {/* Header with Polling Status */}
 
       {/* Create Post Form */}
       <div className="mb-10 rounded-lg border border-gray-200 bg-white p-6 shadow-md">
@@ -111,6 +195,8 @@ export default function ForumPage() {
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              onFocus={() => setIsTyping(true)}
+              onBlur={() => setIsTyping(false)}
               className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
               placeholder="What's your question about?"
               required
@@ -125,6 +211,8 @@ export default function ForumPage() {
               id="content"
               value={content}
               onChange={(e) => setContent(e.target.value)}
+              onFocus={() => setIsTyping(true)}
+              onBlur={() => setIsTyping(false)}
               className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
               placeholder="Describe your question in detail..."
               rows={4}
@@ -152,7 +240,7 @@ export default function ForumPage() {
 
         {isLoading || authLoading ? (
           <div className="flex justify-center py-10">
-            <div className="h-10 w-10 animate-spin rounded-full border-b-2 border-t-2 border-blue-500"></div>
+            <div className="size-10 animate-spin rounded-full border-y-2 border-blue-500"></div>
           </div>
         ) : posts.length > 0 ? (
           <div className="space-y-6">

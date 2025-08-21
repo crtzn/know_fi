@@ -20,21 +20,25 @@
       "main": "src/know_fi_backend/quests/main.mo",
       "type": "motoko"
     },
+    "icrc7": {
+      "main": "src/know_fi_backend/nft/src/main.mo",
+      "type": "motoko"
+    },
     "know_fi_frontend": {
       "source": ["src/know_fi_frontend/out"],
       "type": "assets",
       "dependencies": ["profile", "quiz", "auth", "quests", "forum"]
     },
     "internet_identity": {
-      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
       "type": "custom",
-      "specified_id": "rdmx6-jaaaa-aaaaa-aaadq-cai",
+      "candid": "https://github.com/dfinity/internet-identity/releases/download/release-2025-04-04-v3/internet_identity.did",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/download/release-2025-04-04-v3/internet_identity_dev.wasm.gz",
+      "init_arg": "(opt record { captcha_config = opt record { max_unsolved_captchas= 50:nat64; captcha_trigger = variant {Static = variant {CaptchaDisabled}}}})",
       "remote": {
         "id": {
           "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
         }
-      },
-      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
+      }
     }
   },
   "networks": {
@@ -45,6 +49,11 @@
     "local": {
       "type": "ephemeral",
       "bind": "127.0.0.1:4943"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "mops sources"
     }
   },
   "output_env_file": ".env",

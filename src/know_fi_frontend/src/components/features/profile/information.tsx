@@ -1,10 +1,13 @@
+'use client';
+
 import { CircleDollarSign, MapPin } from 'lucide-react';
-import { Pixelify_Sans } from 'next/font/google';
 import React from 'react';
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { UserProfile } from '@/hooks/userProfile';
 
 export function Information() {
+  const { userProfile, userToken } = UserProfile();
   return (
     <div className="w-12/12">
       <div className="relative mt-5">
@@ -15,7 +18,7 @@ export function Information() {
 
         <Card className="rounded-none">
           <CardHeader>
-            <CardTitle className="font-mono text-xl font-bold">Adrian Paul S. Orendain</CardTitle>
+            <CardTitle className="font-mono text-xl font-bold">{userProfile?.name}</CardTitle>
             <CardDescription>
               <div className="flex items-center gap-2">
                 <span className="text-lg font-semibold text-green-500 outline-black">Level</span>
@@ -33,12 +36,12 @@ export function Information() {
 
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">
-                <MapPin className="h-10 w-10" />
+                <MapPin className="size-10" />
                 <span className="">Texas, USA</span>
               </div>
               <div className="flex items-center gap-2">
-                <CircleDollarSign className="h-10 w-10" />
-                <span className="">1,143 $KNF</span>
+                <CircleDollarSign className="size-10" />
+                <span>{userToken} $KNF</span>
               </div>
             </div>
           </CardContent>

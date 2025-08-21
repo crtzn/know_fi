@@ -32,6 +32,7 @@ class AuthService {
   private authActor: any = null;
   private config: AuthConfig;
   private isInitialized = false;
+  private initializePromise: Promise<void> | null = null;
 
   constructor() {
     const network = process.env.NEXT_PUBLIC_DFX_NETWORK || 'local';
@@ -48,11 +49,21 @@ class AuthService {
   }
 
   /**
-   * Initialize AuthClient and setup actor
+   * Initialize AuthClient and setup actor (only once)
    */
   async initialize(): Promise<void> {
     if (this.isInitialized) return;
 
+    // If already initializing, wait for that promise
+    if (this.initializePromise) {
+      return this.initializePromise;
+    }
+
+    this.initializePromise = this._initialize();
+    return this.initializePromise;
+  }
+
+  private async _initialize(): Promise<void> {
     try {
       this.authClient = await AuthClient.create({
         idleOptions: {
@@ -65,6 +76,7 @@ class AuthService {
       this.isInitialized = true;
     } catch (error) {
       console.error('Failed to initialize AuthService:', error);
+      this.initializePromise = null; // Reset so it can be retried
       throw new Error('Authentication initialization failed');
     }
   }
@@ -89,18 +101,34 @@ class AuthService {
    */
   async login(): Promise<AuthResult> {
     try {
+      console.log('🔐 Starting login process...');
       await this.initialize();
 
       if (!this.authClient) {
         return { success: false, error: 'AuthClient not initialized' };
       }
 
+      // Check if already authenticated
+      const isAlreadyAuth = await this.authClient.isAuthenticated();
+      if (isAlreadyAuth) {
+        console.log('✅ Already authenticated, updating session...');
+        await this.updateActor();
+        const session = await this.getCurrentSession();
+        return {
+          success: true,
+          message: 'Already authenticated',
+          session,
+        };
+      }
+
+      console.log('🚀 Initiating Internet Identity login...');
       return new Promise((resolve) => {
         this.authClient!.login({
           identityProvider: this.config.identityProvider,
           maxTimeToLive: this.config.maxTimeToLive,
           onSuccess: async () => {
             try {
+              console.log('✅ Login successful, updating actor...');
               await this.updateActor();
               const session = await this.getCurrentSession();
               resolve({
@@ -109,6 +137,7 @@ class AuthService {
                 session,
               });
             } catch (error) {
+              console.error('❌ Failed to update session after login:', error);
               resolve({
                 success: false,
                 error: 'Failed to update session after login',
@@ -116,6 +145,7 @@ class AuthService {
             }
           },
           onError: (error) => {
+            console.error('❌ Login failed:', error);
             resolve({
               success: false,
               error: `Login failed: ${error}`,
@@ -124,6 +154,7 @@ class AuthService {
         });
       });
     } catch (error) {
+      console.error('❌ Login initialization failed:', error);
       return {
         success: false,
         error: `Login initialization failed: ${error}`,

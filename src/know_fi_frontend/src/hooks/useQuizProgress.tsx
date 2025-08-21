@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
+import { useAuth } from '@/contexts/AuthContext';
 import { QuizData } from '@/core/types/quizData.types';
 import { shuffleArray } from '@/core/utils';
-import { useAuth } from '@/hooks/useAuth';
 import { quizData } from '@/providers/lib/quizData';
 
 import { UserProfile } from './userProfile';

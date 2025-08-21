@@ -3,6 +3,7 @@ import { Identity } from '@dfinity/agent';
 // Import all canister actors
 import { canisterId as authCanisterId, createActor as createAuthActor } from '../../../declarations/auth';
 import { createActor as createForumActor, canisterId as forumCanisterId } from '../../../declarations/forum';
+import { createActor as createNFTActor, canisterId as NFTCanisterId } from '../../../declarations/icrc7';
 import { createActor as createProfileActor, canisterId as profileCanisterId } from '../../../declarations/profile';
 import { createActor as createQuestActor, canisterId as questCanisterId } from '../../../declarations/quests';
 import { createActor as createQuizActor, canisterId as quizCanisterId } from '../../../declarations/quiz';
@@ -18,6 +19,7 @@ export interface Actors {
   profile: ReturnType<typeof createProfileActor>;
   quest: ReturnType<typeof createQuestActor>;
   quiz: ReturnType<typeof createQuizActor>;
+  nft: ReturnType<typeof createNFTActor>;
 }
 
 export interface CanisterIds {
@@ -26,6 +28,7 @@ export interface CanisterIds {
   profile: string;
   quest: string;
   quiz: string;
+  nft: string;
 }
 
 class CanisterService {
@@ -56,6 +59,7 @@ class CanisterService {
       profile: createProfileActor(profileCanisterId, { agentOptions }),
       quest: createQuestActor(questCanisterId, { agentOptions }),
       quiz: createQuizActor(quizCanisterId, { agentOptions }),
+      nft: createNFTActor(NFTCanisterId, { agentOptions }),
     };
 
     return this.actors;
@@ -100,6 +104,7 @@ class CanisterService {
       profile: profileCanisterId,
       quest: questCanisterId,
       quiz: quizCanisterId,
+      nft: NFTCanisterId,
     };
   }
 

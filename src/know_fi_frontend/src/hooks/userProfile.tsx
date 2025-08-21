@@ -1,6 +1,9 @@
+'use client';
+
 import { useCallback, useEffect, useState } from 'react';
 
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/contexts/AuthContext';
+import { Profile } from '@/core/types/profile.types';
 
 export const UserProfile = () => {
   const { actors, userPrincipal } = useAuth();
@@ -8,11 +11,21 @@ export const UserProfile = () => {
   const [currentEnergy, setCurrentEnergy] = useState<number>(0);
   const [userToken, setUserToken] = useState<number>(0);
   const [loading, setLoading] = useState(false);
+  const [userProfile, setUserProfile] = useState<Profile | null>(null);
 
   useEffect(() => {
+    fetchProfile();
     getUserEnergy();
     getUserToken();
   }, [actors]);
+
+  const fetchProfile = async () => {
+    try {
+      const profile = await actors.profile.getProfile();
+      setUserProfile(profile[0]);
+      console.log;
+    } catch (error) {}
+  };
 
   const getUserCategories = useCallback(async () => {
     const categories = await actors.quiz?.getCategories();
@@ -45,5 +58,14 @@ export const UserProfile = () => {
     }
   }, [actors, userPrincipal]);
 
-  return { currentEnergy, setCurrentEnergy, userToken, categories, getUserCategories, getUserEnergy, loading };
+  return {
+    currentEnergy,
+    setCurrentEnergy,
+    userToken,
+    categories,
+    getUserCategories,
+    getUserEnergy,
+    loading,
+    userProfile,
+  };
 };

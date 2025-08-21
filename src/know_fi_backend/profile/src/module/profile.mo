@@ -16,6 +16,7 @@ module {
  public func updateProfile(
     profiles: Trie.Trie<Principal, ProfileType.Profile>,
     caller: Principal,
+    name: ?Text,
     userName: ?Text,
     bio: ?Text,
     github: ?Text,
@@ -31,6 +32,7 @@ module {
         };
         case (?profile) {
             let updatedProfile : ProfileType.Profile = {
+                name = Option.get<Text>(name, profile.name);
                 userName = Option.get<Text>(userName, profile.userName);
                 bio = Option.get<Text>(bio, profile.bio);
                 github = Option.get<Text>(github, profile.github);

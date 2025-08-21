@@ -6,8 +6,9 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/contexts/AuthContext';
 import { useQuizProgress } from '@/hooks/useQuizProgress';
+import { UserProfile } from '@/hooks/userProfile';
 import coinIcon from '@/public/assets/icon-coin.svg';
 
 interface QuizResult {
@@ -17,6 +18,7 @@ interface QuizResult {
 
 export default function Quiz() {
   const { actors } = useAuth();
+  const { currentEnergy } = UserProfile();
   const { isCorrect, currentQuestion, nextQuestion, handleAnswer, options } = useQuizProgress();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [timeLeft, setTimeLeft] = useState(20); // 20 seconds timer

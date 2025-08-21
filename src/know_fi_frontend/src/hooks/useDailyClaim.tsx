@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/contexts/AuthContext';
 
 export function useDailyClaim() {
   const { actors } = useAuth();
