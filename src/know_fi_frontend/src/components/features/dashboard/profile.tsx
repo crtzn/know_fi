@@ -16,7 +16,7 @@ import knf_token from '@/public/assets/knf_token.png';
 
 export function ProfileCard() {
   const { isClient } = useClient();
-  const { currentEnergy, loading, userToken } = UserProfile();
+  const { currentEnergy, loading, userToken, userProfile } = UserProfile();
 
   useEffect(() => {
     console.log('User Token Balances: ', userToken);
@@ -38,7 +38,7 @@ export function ProfileCard() {
                   className="border-[3px] border-black"
                 />
                 <div className="flex size-full flex-col justify-end pb-8">
-                  <h1 className="text-4xl font-bold">John Doe</h1>
+                  <h1 className="text-4xl font-bold">{userProfile?.name}</h1>
                   <h1 className="text-2xl font-bold text-gray-800">Aura Points</h1>
                   <div className="flex items-center gap-3">
                     <Image src={aura_star} alt="Aura Star" width={22} unoptimized />

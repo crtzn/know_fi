@@ -12,16 +12,23 @@ export const UserProfile = () => {
   const [userToken, setUserToken] = useState<number>(0);
   const [loading, setLoading] = useState(false);
   const [userProfile, setUserProfile] = useState<Profile | null>(null);
+  const [principal, setPrincipal] = useState('');
 
   useEffect(() => {
     fetchProfile();
     getUserEnergy();
     getUserToken();
+    fetchPrincipal();
   }, [actors]);
+
+  const fetchPrincipal = async () => {
+    const principal = await actors.profile.getPrincipal();
+    setPrincipal(principal.toText());
+  };
 
   const fetchProfile = async () => {
     try {
-      const profile = await actors.profile.getProfile();
+      const profile = await actors.profile?.getProfile();
       setUserProfile(profile[0]);
       console.log;
     } catch (error) {}
@@ -67,5 +74,6 @@ export const UserProfile = () => {
     getUserEnergy,
     loading,
     userProfile,
+    principal,
   };
 };

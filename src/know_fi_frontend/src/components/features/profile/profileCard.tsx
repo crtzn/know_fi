@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card';
 import { UserProfile } from '@/hooks/userProfile';
 
 export function ProfileCard() {
-  const { userProfile } = UserProfile();
+  const { userProfile, principal } = UserProfile();
   return (
     <Card className="overflow-hidden border-2 border-b-4 border-r-4 border-black">
       {/* Banner */}
@@ -31,7 +31,9 @@ export function ProfileCard() {
 
           {/* Principal ID - Top Right */}
           <div className="absolute right-4 top-4 flex gap-2">
-            <p className="text-sm text-black">Principal ID: xy123-qwrt4-fg234q-qes456-tffy</p>
+            <p className="text-sm text-black">
+              {principal.toString().slice(0, 5)}...{principal.toString().slice(-6)}
+            </p>
             <button className="text-blacktransition-colors hover:text-white">
               <Copy size={16} />
             </button>
