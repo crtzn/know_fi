@@ -14,7 +14,8 @@
     },
     "forum": {
       "main": "src/know_fi_backend/forum/main.mo",
-      "type": "motoko"
+      "type": "motoko",
+      "dependencies": ["profile"]
     },
     "quests": {
       "main": "src/know_fi_backend/quests/main.mo",
