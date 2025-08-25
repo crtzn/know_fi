@@ -1,6 +1,7 @@
 'use client';
 
 import { Facebook, Handshake, MessageCircleMore, MessageCircleQuestionMark, UserRoundPen, X } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -9,6 +10,7 @@ import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/contexts/AuthContext';
 import useClient from '@/core/hooks/utils/useClient';
 import { useDailyClaim } from '@/hooks/useDailyClaim';
+import Owl from '@/public/assets/fullOwl.svg';
 import bannerImg from '@/public/assets/quest-banner.png';
 
 const QUEST_DATA = [
@@ -170,6 +172,17 @@ export default function Home() {
                 </div>
               );
             })}
+          </div>
+          <div className="my-10 flex w-full items-center justify-center">
+            <Image src={Owl.src} alt="Owl" width={100} height={100} className="mr-5" />
+            <div>
+              <div className="flex flex-col items-center justify-center align-middle">
+                <h2 className="text-2xl font-medium">Invite A Friend</h2>
+                <p className="text-center">
+                  Having fun? Share the love with a friend! <br />
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       )}

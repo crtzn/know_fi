@@ -1,7 +1,5 @@
 'use client';
 
-import { D } from '@tanstack/react-query-devtools/build/legacy/ReactQueryDevtools-Cn7cKi7o';
-
 import useClient from '@/core/hooks/utils/useClient';
 import marketplace from '@/public/assets/marketplace.svg';
 

@@ -18,4 +18,12 @@ persistent actor class Profile () {
     public shared ({ caller }) func getProfile () : async ?ProfileType.Profile {
         ProfileModule.getProfile(profiles, caller);
     };
+
+    public shared query func getProfileByPrincipal(userId: Principal) : async ?ProfileType.Profile {
+        ProfileModule.getProfile(profiles, userId);
+    };
+
+    public shared({ caller }) func getPrincipal() : async Principal {
+    return caller;
+    }
 }

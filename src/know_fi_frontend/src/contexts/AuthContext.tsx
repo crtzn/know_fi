@@ -1,6 +1,7 @@
 'use client';
 
-import React, { createContext, ReactNode, useContext } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { createContext, ReactNode, useContext, useEffect } from 'react';
 
 import { useAuthHook, type AuthState } from '../hooks/useAuth';
 import { type Actors } from '../services';
@@ -25,6 +26,17 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const authHookValue = useAuthHook();
+  const router = useRouter();
+
+  useEffect(() => {
+    const sessionTimeout = setTimeout(() => {
+      authHookValue.logout().then(() => {
+        router.push('/login');
+      });
+    }, 1800000); // 30 minutes in milliseconds
+
+    return () => clearTimeout(sessionTimeout); // Cleanup on unmount
+  }, [authHookValue, router]);
 
   return <AuthContext.Provider value={authHookValue}>{children}</AuthContext.Provider>;
 };

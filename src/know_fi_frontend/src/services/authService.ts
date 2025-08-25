@@ -44,7 +44,6 @@ class AuthService {
           ? 'https://identity.ic0.app'
           : `http://${process.env.NEXT_PUBLIC_CANISTER_ID_INTERNET_IDENTITY}.localhost:4943/`,
       host: isLocal ? 'http://localhost:4943' : 'https://icp0.io',
-      maxTimeToLive: BigInt(8) * BigInt(3600) * BigInt(1000) * BigInt(1000) * BigInt(1000), // 8 hours
     };
   }
 
