@@ -78,6 +78,10 @@ shared(_init_msg) actor class KnowFiNFT(_args : {
     return userNFTs;
   };
 
+  public shared({caller}) func myNFTs() : async [(Nat, {owner: Principal; metadata: [(Text, Value)]})] {
+    return nfts;
+  };
+
   // === MINTING FUNCTIONS ===
 
   public shared({caller}) func mintCourseCompletionCertificate(courseName: Text) : async Nat {
@@ -93,7 +97,7 @@ shared(_init_msg) actor class KnowFiNFT(_args : {
       ("student", #Text(Principal.toText(caller))),
       ("issued_by", #Text("KnowFi")),
       // ("image", #Text("https://knowfi.com/certificates/" # courseId # ".png")),
-      ("gif", #Text("https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cmY3cWdyMTdvYWVicDZzNTRoNzlxZGpnZmo4eGQ5ZDkzZXJsamNidSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/7Jk79EQznTFpBcyeIB/giphy.gif")),
+      ("image", #Text("https://mksruxayrhhomka4lynqig33l3itkcqly3wzpqunnz3fwrhdpkda.arweave.net/YqUaXBiJzuYoHF4bBBt7XtE1CgvG7ZfCjW52W0TjeoY")),
     ];
 
     let nftEntry = (tokenId, {

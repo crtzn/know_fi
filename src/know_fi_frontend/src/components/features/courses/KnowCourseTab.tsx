@@ -8,7 +8,7 @@ export function KnowCourseTab() {
   const courses = [
     {
       id: 1,
-      title: 'Trading 101',
+      title: 'MOTOKO Fundamentals',
       description: 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt.',
       rating: 4.5,
       tokens: '120 Token',
@@ -17,7 +17,7 @@ export function KnowCourseTab() {
     },
     {
       id: 2,
-      title: 'Blockchain Fundamentals',
+      title: 'ICP 101',
       description: 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt.',
       rating: 4.5,
       tokens: '120 Token',
