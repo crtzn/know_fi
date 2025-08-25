@@ -82,7 +82,7 @@ export const useQuizProgress = () => {
 
     // Map your question's level to the Motoko variant
     let levelVariant;
-    switch (currentQuestion.difficult) {
+    switch (currentQuestion.difficulty) {
       case 'easy':
         levelVariant = { easy: null };
         break;

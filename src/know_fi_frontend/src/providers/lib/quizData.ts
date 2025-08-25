@@ -12,7 +12,7 @@ export const quizData = [
     explanation:
       'The Internet Computer, developed by DFINITY, aims to extend the functionality of the public internet by providing a decentralized blockchain platform where developers can build and deploy scalable, secure applications and smart contracts, known as canisters.',
     difficulty: 'easy',
-    token_reward: 0.5,
+    token_reward: 5,
     category: 'Internet Computer Protocol',
   },
   {
@@ -22,7 +22,7 @@ export const quizData = [
     explanation:
       'Dominic Williams founded the DFINITY Foundation, which launched the Internet Computer in May 2021. He is a key figure in its development and vision for decentralized computing.',
     difficulty: 'easy',
-    token_reward: 0.5,
+    token_reward: 5,
     category: 'Internet Computer Protocol',
   },
   {
@@ -37,7 +37,7 @@ export const quizData = [
     explanation:
       'Canisters are the computational units on the Internet Computer, functioning as smart contracts that can store data, execute code, and serve web content, enabling developers to build scalable applications.',
     difficulty: 'medium',
-    token_reward: 1.5,
+    token_reward: 15,
     category: 'Internet Computer Protocol',
   },
   {
@@ -52,7 +52,7 @@ export const quizData = [
     explanation:
       'ICP uses a unique consensus mechanism called Internet Computer Consensus (ICC), which combines cryptographic techniques and a threshold relay to achieve fast, secure, and scalable consensus across its decentralized network.',
     difficulty: 'medium',
-    token_reward: 1.5,
+    token_reward: 15,
     category: 'Internet Computer Protocol',
   },
   {
@@ -67,7 +67,7 @@ export const quizData = [
     explanation:
       'The Network Nervous System (NNS) is ICP’s decentralized governance system, where token holders stake ICP to vote on proposals that determine network upgrades, canister management, and other operational decisions.',
     difficulty: 'hard',
-    token_reward: 3,
+    token_reward: 25,
     category: 'Internet Computer Protocol',
   },
   {
@@ -82,7 +82,7 @@ export const quizData = [
     explanation:
       'ICP employs orthogonal persistence, allowing canisters to store and manage data directly on the blockchain, unlike traditional blockchains that often rely on off-chain storage or have limited data capacity.',
     difficulty: 'hard',
-    token_reward: 3,
+    token_reward: 25,
     category: 'Internet Computer Protocol',
   },
   {
@@ -97,7 +97,7 @@ export const quizData = [
     explanation:
       'ICP’s WebSpeed feature allows canisters to serve web content (e.g., HTML, CSS, JavaScript) directly from the blockchain, enabling fully decentralized web applications without relying on centralized servers.',
     difficulty: 'Extreme',
-    token_reward: 5,
+    token_reward: 45,
     category: 'Internet Computer Protocol',
   },
   {
@@ -112,7 +112,7 @@ export const quizData = [
     explanation:
       "ICP’s reverse gas model requires developers to prepay 'cycles' (a computational resource) to run canisters, making it free for end-users to interact with applications, unlike Ethereum’s model where users pay gas fees.",
     difficulty: 'Extreme',
-    token_reward: 5,
+    token_reward: 45,
     category: 'Internet Computer Protocol',
   },
   // Trading Category
@@ -128,7 +128,7 @@ export const quizData = [
     explanation:
       'A bull market is characterized by rising asset prices, typically driven by investor optimism and increased buying activity. It’s the opposite of a bear market, where prices decline.',
     difficulty: 'easy',
-    token_reward: 0.5,
+    token_reward: 5,
     category: 'Trading',
   },
   {
@@ -143,7 +143,7 @@ export const quizData = [
     explanation:
       'Liquidity refers to how easily an asset can be bought or sold in the market without causing significant price changes. High liquidity means tight spreads and fast trade execution.',
     difficulty: 'easy',
-    token_reward: 0.5,
+    token_reward: 5,
     category: 'Trading',
   },
   {
@@ -158,7 +158,7 @@ export const quizData = [
     explanation:
       'A stop-loss order is a risk management tool that automatically sells an asset when its price falls to a predetermined level, helping traders limit potential losses.',
     difficulty: 'medium',
-    token_reward: 1.5,
+    token_reward: 15,
     category: 'Trading',
   },
   {
@@ -173,7 +173,7 @@ export const quizData = [
     explanation:
       'A margin call occurs when a broker demands that a trader deposits additional funds or securities into their margin account to meet the minimum maintenance margin, typically due to losses in leveraged positions.',
     difficulty: 'medium',
-    token_reward: 1.5,
+    token_reward: 15,
     category: 'Trading',
   },
   {
@@ -188,7 +188,7 @@ export const quizData = [
     explanation:
       'Technical analysis involves analyzing past market data, such as price and volume, using charts and indicators (e.g., moving averages, RSI) to forecast future price trends.',
     difficulty: 'hard',
-    token_reward: 3,
+    token_reward: 25,
     category: 'Trading',
   },
   {
@@ -203,7 +203,7 @@ export const quizData = [
     explanation:
       'Short selling involves borrowing an asset, selling it at the current price, and buying it back later at a lower price to return it, profiting from the price difference.',
     difficulty: 'hard',
-    token_reward: 3,
+    token_reward: 25,
     category: 'Trading',
   },
   {
@@ -218,7 +218,7 @@ export const quizData = [
     explanation:
       'A candlestick chart displays an asset’s price movements over a specific period, showing the opening, closing, high, and low prices in a visual format, often used in technical analysis.',
     difficulty: 'Extreme',
-    token_reward: 5,
+    token_reward: 45,
     category: 'Trading',
   },
   {
@@ -233,7 +233,7 @@ export const quizData = [
     explanation:
       'Bollinger Bands are a technical analysis tool consisting of a moving average and two standard deviation bands, used to measure volatility and identify potential overbought or oversold market conditions.',
     difficulty: 'Extreme',
-    token_reward: 5,
+    token_reward: 45,
     category: 'Trading',
   },
   // Programming Category
@@ -249,7 +249,7 @@ export const quizData = [
     explanation:
       'A variable is a named container in a program’s memory that holds data, which can be changed during execution, allowing developers to store and manipulate values.',
     difficulty: 'easy',
-    token_reward: 0.5,
+    token_reward: 5,
     category: 'Programming',
   },
   {
@@ -264,7 +264,7 @@ export const quizData = [
     explanation:
       'An IDE (Integrated Development Environment) is a software suite that provides tools like a code editor, debugger, and compiler to streamline software development.',
     difficulty: 'easy',
-    token_reward: 0.5,
+    token_reward: 5,
     category: 'Programming',
   },
   {
@@ -279,7 +279,7 @@ export const quizData = [
     explanation:
       'A for loop is a control structure used to repeat a block of code a predetermined number of times, often used for iterating over arrays or ranges.',
     difficulty: 'medium',
-    token_reward: 1.5,
+    token_reward: 15,
     category: 'Programming',
   },
   {
@@ -294,7 +294,7 @@ export const quizData = [
     explanation:
       'OOP is a programming paradigm that uses objects, which combine data (properties) and behavior (methods), to model real-world entities and promote code reuse.',
     difficulty: 'medium',
-    token_reward: 1.5,
+    token_reward: 15,
     category: 'Programming',
   },
   {
@@ -309,7 +309,7 @@ export const quizData = [
     explanation:
       'A closure is a function that remembers the variables in its outer scope, even after the outer function has finished executing, allowing for data encapsulation.',
     difficulty: 'hard',
-    token_reward: 3,
+    token_reward: 25,
     category: 'Programming',
   },
   {
@@ -324,7 +324,7 @@ export const quizData = [
     explanation:
       'Polymorphism, a core OOP concept, allows objects of different classes to be treated as instances of a common superclass, enabling shared behaviors through methods like overriding.',
     difficulty: 'hard',
-    token_reward: 3,
+    token_reward: 25,
     category: 'Programming',
   },
   {
@@ -339,7 +339,7 @@ export const quizData = [
     explanation:
       'A mutex (mutual exclusion) is a synchronization primitive used in concurrent programming to ensure that only one thread can access a shared resource at a time, preventing race conditions.',
     difficulty: 'Extreme',
-    token_reward: 5,
+    token_reward: 45,
     category: 'Programming',
   },
   {
@@ -354,7 +354,7 @@ export const quizData = [
     explanation:
       'Functional programming is a paradigm that treats computation as the evaluation of mathematical functions, emphasizing immutability, pure functions (no side effects), and higher-order functions.',
     difficulty: 'Extreme',
-    token_reward: 5,
+    token_reward: 45,
     category: 'Programming',
   },
   // Artificial Intelligence Category
@@ -370,7 +370,7 @@ export const quizData = [
     explanation:
       'AI aims to develop systems that can mimic human cognitive abilities, such as reasoning, learning, and problem-solving, to perform tasks like image recognition or natural language processing.',
     difficulty: 'easy',
-    token_reward: 0.5,
+    token_reward: 5,
     category: 'Artificial Intelligence',
   },
   {
@@ -385,7 +385,7 @@ export const quizData = [
     explanation:
       'A neural network is a series of algorithms that mimic the human brain’s structure, using layers of interconnected nodes to process data and learn patterns for tasks like classification.',
     difficulty: 'easy',
-    token_reward: 0.5,
+    token_reward: 5,
     category: 'Artificial Intelligence',
   },
   {
@@ -400,7 +400,7 @@ export const quizData = [
     explanation:
       'Supervised learning involves training an AI model on a dataset with input-output pairs (labeled data) to predict outcomes, such as classifying images or predicting prices.',
     difficulty: 'medium',
-    token_reward: 1.5,
+    token_reward: 15,
     category: 'Artificial Intelligence',
   },
   {
@@ -415,7 +415,7 @@ export const quizData = [
     explanation:
       'Overfitting occurs when an AI model learns the training data too well, including noise, resulting in poor performance on new, unseen data due to lack of generalization.',
     difficulty: 'medium',
-    token_reward: 1.5,
+    token_reward: 15,
     category: 'Artificial Intelligence',
   },
   {
@@ -430,7 +430,7 @@ export const quizData = [
     explanation:
       'A loss function quantifies the difference between a model’s predicted outputs and the actual target values, guiding the optimization process during training to minimize errors.',
     difficulty: 'hard',
-    token_reward: 3,
+    token_reward: 25,
     category: 'Artificial Intelligence',
   },
   {
@@ -445,7 +445,7 @@ export const quizData = [
     explanation:
       'Reinforcement learning involves an agent learning to make decisions by trying actions in an environment to maximize a cumulative reward, used in applications like game playing or robotics.',
     difficulty: 'hard',
-    token_reward: 3,
+    token_reward: 25,
     category: 'Artificial Intelligence',
   },
   {
@@ -460,7 +460,7 @@ export const quizData = [
     explanation:
       'Backpropagation is an algorithm used in training neural networks to calculate the gradient of the loss function with respect to the model’s weights, enabling optimization via gradient descent.',
     difficulty: 'Extreme',
-    token_reward: 5,
+    token_reward: 45,
     category: 'Artificial Intelligence',
   },
   {
@@ -475,7 +475,7 @@ export const quizData = [
     explanation:
       'A transformer is a neural network architecture that uses self-attention mechanisms to process sequential data, widely used in natural language processing tasks like those in GPT and BERT models.',
     difficulty: 'Extreme',
-    token_reward: 5,
+    token_reward: 45,
     category: 'Artificial Intelligence',
   },
 ];

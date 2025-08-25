@@ -58,7 +58,7 @@ export default function Home() {
             <EventCard />
             <NotificationCard />
           </div>
-          <DialogDemo />
+          {/* <DialogDemo /> */}
         </div>
       )}
     </main>
