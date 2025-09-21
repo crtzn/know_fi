@@ -1,11 +1,113 @@
-import { Star } from 'lucide-react';
-import React from 'react';
+'use client';
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { RefreshCw, Star } from 'lucide-react';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+
+import { Button } from '@/components/ui/button';
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { canisterService } from '@/services/canisterService';
 
 export function KnowCourseTab() {
-  const courses = [
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
+
+  // Load courses from backend
+  const loadCourses = async () => {
+    try {
+      setLoading(true);
+
+      // Check if canister service is initialized
+      if (!canisterService.isInitialized()) {
+        console.log('Canister service not initialized yet, using mock data');
+        setCourses(mockCourses);
+        setLoading(false);
+        return;
+      }
+
+      const coursesActor = canisterService.getActor('courses');
+      const backendCourses = await coursesActor.getCourses();
+
+      // Convert backend courses to display format
+      const convertedCourses = backendCourses.map((course: any, index: number) => {
+        // Handle category variant from Motoko backend
+        const categoryKey = Object.keys(course.category)[0];
+        const category = categoryKey || 'other';
+
+        // Set color bar based on category
+        const getColorBar = (cat: string) => {
+          switch (cat) {
+            case 'trading':
+              return 'bg-teal-500';
+            case 'blockchain':
+            case 'icp':
+              return 'bg-orange-500';
+            case 'ai':
+              return 'bg-gray-600';
+            case 'motoko':
+              return 'bg-blue-500';
+            case 'programming':
+              return 'bg-green-500';
+            default:
+              return 'bg-purple-500';
+          }
+        };
+
+        return {
+          id: Number(course.id),
+          title: course.title,
+          description: course.description,
+          rating: course.rating || 4.5,
+          tokens: `${course.token_reward} Tokens`,
+          category: category,
+          colorBar: getColorBar(category),
+        };
+      });
+
+      console.log('Loaded courses from backend:', convertedCourses);
+
+      // Add our static programming course for demo
+      const staticProgrammingCourse = {
+        id: 999, // Use a high ID to avoid conflicts
+        title: 'Motoko Fundamentals',
+        description:
+          'Learn Motoko programming language for Internet Computer development. Build smart contracts and canisters with hands-on coding experience.',
+        rating: 4.9,
+        tokens: '200 Tokens',
+        category: 'programming',
+        colorBar: 'bg-green-500',
+      };
+
+      // Combine backend courses with our static course
+      const allCourses = [...convertedCourses, staticProgrammingCourse];
+      setCourses(allCourses);
+      setError(null);
+    } catch (error) {
+      console.error('Error loading courses:', error);
+      setError('Failed to load courses from backend');
+      // Fallback to mock data
+      setCourses(mockCourses);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // useEffect to load courses on component mount
+  useEffect(() => {
+    loadCourses();
+  }, []);
+
+  // Manual refresh function
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    await loadCourses();
+    setRefreshing(false);
+  };
+
+  const mockCourses = [
     {
       id: 1,
       title: 'MOTOKO Fundamentals',
@@ -60,6 +162,16 @@ export function KnowCourseTab() {
       category: 'ai',
       colorBar: 'bg-gray-600',
     },
+    {
+      id: 7,
+      title: 'Web Development with JavaScript',
+      description:
+        'Learn modern web development with JavaScript, HTML, CSS, and build interactive projects using our integrated Web IDE.',
+      rating: 4.8,
+      tokens: '150 Token',
+      category: 'programming',
+      colorBar: 'bg-green-500',
+    },
   ];
 
   const CourseCard = ({ course }) => (
@@ -81,9 +193,11 @@ export function KnowCourseTab() {
             <div className="text-sm font-medium text-gray-700">{course.tokens}</div>
             <div className="text-xs text-gray-500">Access This Course</div>
           </div>
-          <button className="rounded-full bg-purple-700 px-6 py-2 font-medium text-white transition-colors duration-200 hover:bg-purple-800">
-            Get Course →
-          </button>
+          <Link href={`/course/${course.id}`}>
+            <button className="rounded-full bg-purple-700 px-6 py-2 font-medium text-white transition-colors duration-200 hover:bg-purple-800">
+              Get Course →
+            </button>
+          </Link>
         </CardFooter>
       </Card>
     </div>
@@ -92,6 +206,20 @@ export function KnowCourseTab() {
   return (
     <div className="container mt-8 flex items-center justify-center px-4">
       <Tabs defaultValue="all-category" className="w-full max-w-6xl">
+        {/* Error message */}
+        {error && (
+          <div className="mb-4 rounded border border-yellow-400 bg-yellow-100 p-4 text-yellow-700">{error}</div>
+        )}
+
+        {/* Refresh button */}
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-2xl font-bold text-gray-900">Available Courses</h2>
+          <Button onClick={handleRefresh} disabled={refreshing} variant="outline" size="sm">
+            <RefreshCw className={`mr-2 h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+            {refreshing ? 'Refreshing...' : 'Refresh'}
+          </Button>
+        </div>
+
         <TabsList className="grid h-auto w-full grid-cols-5 gap-0 border-none bg-transparent p-0">
           <TabsTrigger
             value="all-category"
@@ -125,45 +253,62 @@ export function KnowCourseTab() {
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="all-category" className="mt-8">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {courses.map((course) => (
-              <CourseCard key={course.id} course={course} />
-            ))}
+        {/* Loading state - positioned after tabs */}
+        {loading && (
+          <div className="flex items-center justify-center py-12">
+            <div className="mr-4 h-8 w-8 animate-spin rounded-full border-b-2 border-purple-600"></div>
+            <span className="text-gray-600">Loading courses...</span>
           </div>
-        </TabsContent>
+        )}
 
-        <TabsContent value="trading" className="mt-8">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {courses
-              .filter((course) => course.category === 'trading')
-              .map((course) => (
-                <CourseCard key={course.id} course={course} />
-              ))}
-          </div>
-        </TabsContent>
+        {/* Show content only when not loading */}
+        {!loading && (
+          <>
+            <TabsContent value="all-category" className="mt-8">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {courses.map((course) => (
+                  <CourseCard key={course.id} course={course} />
+                ))}
+              </div>
+            </TabsContent>
 
-        <TabsContent value="programming" className="mt-8">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div className="col-span-full py-12 text-center text-gray-500">Programming courses coming soon...</div>
-          </div>
-        </TabsContent>
+            <TabsContent value="trading" className="mt-8">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {courses
+                  .filter((course) => course.category === 'trading')
+                  .map((course) => (
+                    <CourseCard key={course.id} course={course} />
+                  ))}
+              </div>
+            </TabsContent>
 
-        <TabsContent value="ai" className="mt-8">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {courses
-              .filter((course) => course.category === 'ai')
-              .map((course) => (
-                <CourseCard key={course.id} course={course} />
-              ))}
-          </div>
-        </TabsContent>
+            <TabsContent value="programming" className="mt-8">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {courses
+                  .filter((course) => course.category === 'programming')
+                  .map((course) => (
+                    <CourseCard key={course.id} course={course} />
+                  ))}
+              </div>
+            </TabsContent>
 
-        <TabsContent value="creatives" className="mt-8">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div className="col-span-full py-12 text-center text-gray-500">Creative courses coming soon...</div>
-          </div>
-        </TabsContent>
+            <TabsContent value="ai" className="mt-8">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {courses
+                  .filter((course) => course.category === 'ai')
+                  .map((course) => (
+                    <CourseCard key={course.id} course={course} />
+                  ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="creatives" className="mt-8">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="col-span-full py-12 text-center text-gray-500">Creative courses coming soon...</div>
+              </div>
+            </TabsContent>
+          </>
+        )}
       </Tabs>
     </div>
   );

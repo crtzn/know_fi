@@ -13,11 +13,25 @@ export function CreateStep2({
   onOpenChange,
   onBack,
   onNext,
+  courseData,
+  setCourseData,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onBack: () => void;
   onNext: () => void;
+  courseData: {
+    title: string;
+    hook: string;
+    description: string;
+    category: string;
+    difficulty: string;
+    thumbnail: string;
+    tags: string[];
+    tokenReward: number;
+    priceTokens: number;
+  };
+  setCourseData: React.Dispatch<React.SetStateAction<any>>;
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -38,7 +52,13 @@ export function CreateStep2({
             <Label htmlFor="title">
               Title <span className="text-red-500">*</span>
             </Label>
-            <Input id="title" placeholder="" required />
+            <Input
+              id="title"
+              placeholder="Course Title"
+              required
+              value={courseData.title}
+              onChange={(e) => setCourseData({ ...courseData, title: e.target.value })}
+            />
           </div>
 
           {/* Hook */}
@@ -46,13 +66,24 @@ export function CreateStep2({
             <Label htmlFor="hook">
               Hook <span className="text-red-500">*</span>
             </Label>
-            <Input id="hook" placeholder="Your title here" required />
+            <Input
+              id="hook"
+              placeholder="Your title here"
+              required
+              value={courseData.hook}
+              onChange={(e) => setCourseData({ ...courseData, hook: e.target.value })}
+            />
           </div>
 
           {/* Description */}
           <div className="space-y-1">
             <Label htmlFor="description">Description</Label>
-            <Textarea id="description" placeholder="Course Description..." />
+            <Textarea
+              id="description"
+              placeholder="Course Description..."
+              value={courseData.description}
+              onChange={(e) => setCourseData({ ...courseData, description: e.target.value })}
+            />
           </div>
 
           {/* Category + Difficulty */}
@@ -61,15 +92,24 @@ export function CreateStep2({
               <Label htmlFor="category">
                 Category <span className="text-red-500">*</span>
               </Label>
-              <Select>
+              <Select
+                value={courseData.category}
+                onValueChange={(value) => setCourseData({ ...courseData, category: value })}
+              >
                 <SelectTrigger id="category">
                   <SelectValue placeholder="Select Category" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="tech">Trading</SelectItem>
-                  <SelectItem value="tech">Programming</SelectItem>
-                  <SelectItem value="design">Creatives</SelectItem>
-                  <SelectItem value="business">Artificial Intelligence</SelectItem>
+                  <SelectItem value="trading">Trading</SelectItem>
+                  <SelectItem value="programming">Programming</SelectItem>
+                  <SelectItem value="ai">Artificial Intelligence</SelectItem>
+                  <SelectItem value="blockchain">Blockchain</SelectItem>
+                  <SelectItem value="motoko">Motoko</SelectItem>
+                  <SelectItem value="web3">Web3</SelectItem>
+                  <SelectItem value="defi">DeFi</SelectItem>
+                  <SelectItem value="nft">NFT</SelectItem>
+                  <SelectItem value="icp">ICP</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -78,7 +118,10 @@ export function CreateStep2({
               <Label htmlFor="difficulty">
                 Difficulty <span className="text-red-500">*</span>
               </Label>
-              <Select>
+              <Select
+                value={courseData.difficulty}
+                onValueChange={(value) => setCourseData({ ...courseData, difficulty: value })}
+              >
                 <SelectTrigger id="difficulty">
                   <SelectValue placeholder="Select Difficulty" />
                 </SelectTrigger>
@@ -86,6 +129,7 @@ export function CreateStep2({
                   <SelectItem value="beginner">Beginner</SelectItem>
                   <SelectItem value="intermediate">Intermediate</SelectItem>
                   <SelectItem value="advanced">Advanced</SelectItem>
+                  <SelectItem value="expert">Expert</SelectItem>
                 </SelectContent>
               </Select>
             </div>

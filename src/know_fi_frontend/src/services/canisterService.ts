@@ -2,6 +2,7 @@ import { Identity } from '@dfinity/agent';
 
 // Import all canister actors
 import { canisterId as authCanisterId, createActor as createAuthActor } from '../../../declarations/auth';
+import { canisterId as coursesCanisterId, createActor as createCoursesActor } from '../../../declarations/courses';
 import { createActor as createForumActor, canisterId as forumCanisterId } from '../../../declarations/forum';
 import { createActor as createNFTActor, canisterId as NFTCanisterId } from '../../../declarations/icrc7';
 import { createActor as createProfileActor, canisterId as profileCanisterId } from '../../../declarations/profile';
@@ -15,6 +16,7 @@ export interface CanisterConfig {
 
 export interface Actors {
   auth: ReturnType<typeof createAuthActor>;
+  courses: ReturnType<typeof createCoursesActor>;
   forum: ReturnType<typeof createForumActor>;
   profile: ReturnType<typeof createProfileActor>;
   quest: ReturnType<typeof createQuestActor>;
@@ -24,6 +26,7 @@ export interface Actors {
 
 export interface CanisterIds {
   auth: string;
+  courses: string;
   forum: string;
   profile: string;
   quest: string;
@@ -55,6 +58,7 @@ class CanisterService {
     // Create all actors with the same configuration
     this.actors = {
       auth: createAuthActor(authCanisterId, { agentOptions }),
+      courses: createCoursesActor(coursesCanisterId, { agentOptions }),
       forum: createForumActor(forumCanisterId, { agentOptions }),
       profile: createProfileActor(profileCanisterId, { agentOptions }),
       quest: createQuestActor(questCanisterId, { agentOptions }),
@@ -100,6 +104,7 @@ class CanisterService {
   getCanisterIds(): CanisterIds {
     return {
       auth: authCanisterId,
+      courses: coursesCanisterId,
       forum: forumCanisterId,
       profile: profileCanisterId,
       quest: questCanisterId,

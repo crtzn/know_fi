@@ -1,4 +1,4 @@
-import { Album, ChartColumnBig, CircleUserRound, ClipboardList, House, TrendingUp } from 'lucide-react';
+import { Album, ChartColumnBig, CircleUserRound, ClipboardList, House, Plus, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
@@ -38,6 +38,12 @@ const dashboardItems = [
       },
       {
         id: 5,
+        icon: <Plus width={32} height={32} />,
+        label: 'Contribute Course',
+        href: '/course-contribution',
+      },
+      {
+        id: 6,
         icon: <ClipboardList width={32} height={32} />,
         label: 'Quiz',
         href: '/quiz',
@@ -51,7 +57,7 @@ function Menu() {
     <div>
       <div>
         {/* Top part/Logo */}
-        <Link href="/" className="flex items-center justify-center md:justify-start xl:justify-center gap-2 p-4 mb-6">
+        <Link href="/" className="mb-6 flex items-center justify-center gap-2 p-4 md:justify-start xl:justify-center">
           <House width={90} height={56.5} className="border" />
         </Link>
       </div>
@@ -64,10 +70,10 @@ function Menu() {
               <Link
                 key={items.id}
                 href={items.href}
-                className="flex items-center justify-center lg:justify-start gap-4 text-black py-2"
+                className="flex items-center justify-center gap-4 py-2 text-black lg:justify-start"
               >
                 <div>{items.icon}</div>
-                <span className="hidden lg:block text-xl font-bold">{items.label}</span>
+                <span className="hidden text-xl font-bold lg:block">{items.label}</span>
               </Link>
             ))}
           </div>

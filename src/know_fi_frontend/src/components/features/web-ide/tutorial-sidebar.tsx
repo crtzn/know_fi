@@ -104,11 +104,11 @@ export function TutorialSidebar({ onLoadTutorial, onRunCode, isDeploying }: Tuto
 
             <div>
               <h4 className="mb-2 font-medium">Explanation:</h4>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {selectedTutorial.explanation.map((point, index) => (
-                  <div key={index} className="flex gap-2 text-sm">
-                    <CheckCircle className="mt-0.5 size-4 text-green-500" />
-                    <p className="text-muted-foreground">{point}</p>
+                  <div key={index} className="flex gap-3 text-sm">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" />
+                    <p className="break-words leading-relaxed text-muted-foreground">{point}</p>
                   </div>
                 ))}
               </div>

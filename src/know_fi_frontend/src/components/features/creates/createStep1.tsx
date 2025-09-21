@@ -49,13 +49,10 @@ export function CreateStep1({
 
           {/* LinkedIn */}
           <div className="space-y-1">
-            <Label htmlFor="linkedin">
-              LinkedIn <span className="text-red-500">*</span>
-            </Label>
+            <Label htmlFor="linkedin">LinkedIn</Label>
             <Input
               id="linkedin"
-              placeholder="LinkedIn"
-              required
+              placeholder="LinkedIn (optional)"
               value={creatorData.linkedin}
               onChange={(e) => setCreatorData({ ...creatorData, linkedin: e.target.value })}
             />
@@ -63,13 +60,10 @@ export function CreateStep1({
 
           {/* Github */}
           <div className="space-y-1">
-            <Label htmlFor="github">
-              Github <span className="text-red-500">*</span>
-            </Label>
+            <Label htmlFor="github">Github</Label>
             <Input
               id="github"
-              placeholder="Github"
-              required
+              placeholder="Github (optional)"
               value={creatorData.github}
               onChange={(e) => setCreatorData({ ...creatorData, github: e.target.value })}
             />
@@ -77,13 +71,10 @@ export function CreateStep1({
 
           {/* Website */}
           <div className="space-y-1">
-            <Label htmlFor="website">
-              Website <span className="text-red-500">*</span>
-            </Label>
+            <Label htmlFor="website">Website</Label>
             <Input
               id="website"
-              placeholder="Website Portfolio"
-              required
+              placeholder="Website Portfolio (optional)"
               value={creatorData.website}
               onChange={(e) => setCreatorData({ ...creatorData, website: e.target.value })}
             />

@@ -12,6 +12,11 @@
       "main": "src/know_fi_backend/quiz/src/main.mo",
       "type": "motoko"
     },
+    "courses": {
+      "main": "src/know_fi_backend/courses/main.mo",
+      "type": "motoko",
+      "dependencies": ["profile", "auth"]
+    },
     "forum": {
       "main": "src/know_fi_backend/forum/main.mo",
       "type": "motoko",
@@ -28,7 +33,7 @@
     "know_fi_frontend": {
       "source": ["src/know_fi_frontend/out"],
       "type": "assets",
-      "dependencies": ["profile", "quiz", "auth", "quests", "forum"]
+      "dependencies": ["profile", "quiz", "auth", "quests", "forum", "courses"]
     },
     "internet_identity": {
       "type": "custom",
