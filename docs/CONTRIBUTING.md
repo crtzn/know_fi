@@ -144,6 +144,7 @@ git push origin feature/your-feature-name
 ### Frontend (TypeScript/React)
 
 #### File Organization
+
 ```
 src/
 ├── components/
@@ -158,6 +159,7 @@ src/
 ```
 
 #### Naming Conventions
+
 ```typescript
 // Components: PascalCase
 export function CourseCard() { ... }
@@ -177,6 +179,7 @@ function getUserProfile() { ... }
 ```
 
 #### Code Style
+
 ```typescript
 // Use TypeScript strictly
 interface CourseProps {
@@ -188,7 +191,7 @@ interface CourseProps {
 // Use functional components with hooks
 export function CourseCard({ id, title, onComplete }: CourseProps) {
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const handleComplete = useCallback(async () => {
     setIsLoading(true);
     try {
@@ -213,14 +216,15 @@ export function CourseCard({ id, title, onComplete }: CourseProps) {
 ```
 
 #### Error Handling
+
 ```typescript
 // Use try-catch for async operations
 try {
   const result = await api.createCourse(courseData);
   return result;
 } catch (error) {
-  console.error('Failed to create course:', error);
-  throw new Error('Course creation failed');
+  console.error("Failed to create course:", error);
+  throw new Error("Course creation failed");
 }
 
 // Use error boundaries for component errors
@@ -232,6 +236,7 @@ export function ErrorBoundary({ children }: { children: React.ReactNode }) {
 ### Backend (Motoko)
 
 #### File Organization
+
 ```
 src/know_fi_backend/
 ├── auth/
@@ -249,6 +254,7 @@ src/know_fi_backend/
 ```
 
 #### Naming Conventions
+
 ```motoko
 // Types: PascalCase
 type UserProfile = {
@@ -270,6 +276,7 @@ let MAX_COURSE_DURATION = 480; // minutes
 ```
 
 #### Code Style
+
 ```motoko
 // Use Result types for error handling
 public func createCourse(submission: CourseSubmission) : async Result<Nat, Text> {
@@ -277,12 +284,12 @@ public func createCourse(submission: CourseSubmission) : async Result<Nat, Text>
   if (submission.title.size() == 0) {
     return #err("Course title cannot be empty");
   };
-  
+
   // Verify authentication
   if (Principal.isAnonymous(caller)) {
     return #err("Authentication required");
   };
-  
+
   // Create course
   let courseId = nextCourseId;
   let newCourse: Course = {
@@ -290,11 +297,11 @@ public func createCourse(submission: CourseSubmission) : async Result<Nat, Text>
     title = submission.title;
     // ... other fields
   };
-  
+
   // Store course
   courses.put(courseId, newCourse);
   nextCourseId += 1;
-  
+
   #ok(courseId)
 };
 
@@ -312,13 +319,14 @@ switch (courses.get(courseId)) {
 ```
 
 #### Security Best Practices
+
 ```motoko
 // Always verify caller authentication
 public shared({caller}) func sensitiveOperation() : async Result<(), Text> {
   if (Principal.isAnonymous(caller)) {
     return #err("Authentication required");
   };
-  
+
   // Check authorization
   switch (await auth.hasRole(caller, #admin)) {
     case true {
@@ -336,7 +344,7 @@ public func updateProfile(profile: UserProfile) : async Result<(), Text> {
   if (profile.username.size() < 3 or profile.username.size() > 20) {
     return #err("Username must be between 3 and 20 characters");
   };
-  
+
   // Validate email format (if provided)
   switch (profile.email) {
     case (?email) {
@@ -346,7 +354,7 @@ public func updateProfile(profile: UserProfile) : async Result<(), Text> {
     };
     case null { /* no email provided */ };
   };
-  
+
   // Update profile
   // ...
 }
@@ -393,23 +401,28 @@ When creating a pull request, include:
 
 ```markdown
 ## Description
+
 Brief description of changes made
 
 ## Type of Change
+
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] Documentation update
 
 ## Testing
+
 - [ ] Frontend tests pass
 - [ ] Canister tests pass
 - [ ] Manual testing completed
 
 ## Screenshots (if applicable)
+
 Add screenshots to help explain your changes
 
 ## Checklist
+
 - [ ] My code follows the style guidelines
 - [ ] I have performed a self-review of my code
 - [ ] I have commented my code, particularly in hard-to-understand areas
@@ -435,6 +448,7 @@ Use our bug report template:
 A clear and concise description of what the bug is.
 
 **Steps to Reproduce**
+
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
@@ -447,6 +461,7 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Environment**
+
 - OS: [e.g. macOS, Windows, Linux]
 - Browser: [e.g. Chrome, Firefox, Safari]
 - DFX Version: [e.g. 0.15.0]
@@ -490,6 +505,7 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/) speci
 ```
 
 ### Types
+
 - **feat**: A new feature
 - **fix**: A bug fix
 - **docs**: Documentation only changes
@@ -500,6 +516,7 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/) speci
 - **chore**: Changes to the build process or auxiliary tools
 
 ### Examples
+
 ```
 feat(courses): add course progress tracking
 
@@ -530,7 +547,7 @@ describe('CourseCard', () => {
   it('calls onComplete when button is clicked', () => {
     const onComplete = jest.fn();
     render(<CourseCard title="Test Course" id={1} onComplete={onComplete} />);
-    
+
     fireEvent.click(screen.getByText('Complete Course'));
     expect(onComplete).toHaveBeenCalled();
   });
@@ -578,6 +595,7 @@ When reviewing pull requests:
 We particularly welcome contributions in these areas:
 
 ### High Priority
+
 - **📱 Mobile responsiveness** improvements
 - **♿ Accessibility** enhancements
 - **🔧 Performance** optimizations
@@ -585,12 +603,14 @@ We particularly welcome contributions in these areas:
 - **🌐 Internationalization** support
 
 ### Medium Priority
+
 - **🎨 UI/UX** improvements
 - **📚 Documentation** expansion
 - **🔌 API** enhancements
 - **🛡️ Security** improvements
 
 ### Low Priority
+
 - **🎮 Gamification** features
 - **📊 Analytics** dashboard
 - **🎯 Advanced features**

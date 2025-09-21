@@ -30,33 +30,41 @@ type Role = {
 ### Public Methods
 
 #### `initializeOwner() : async Result<Text, Text>`
+
 Initializes the contract owner (can only be called once).
 
 **Example:**
+
 ```bash
 dfx canister call auth initializeOwner
 ```
 
 #### `assignRole(user: Principal, role: Role) : async Result<Text, Text>`
+
 Assigns a role to a user (owner/admin only).
 
 **Example:**
+
 ```bash
 dfx canister call auth assignRole '(principal "rrkah-fqaaa-aaaaa-aaaaq-cai", variant { admin })'
 ```
 
 #### `getUserRole(user: Principal) : async ?Role`
+
 Gets the role of a specific user.
 
 **Example:**
+
 ```bash
 dfx canister call auth getUserRole '(principal "rrkah-fqaaa-aaaaa-aaaaq-cai")'
 ```
 
 #### `hasRole(user: Principal, role: Role) : async Bool`
+
 Checks if a user has a specific role.
 
 **Example:**
+
 ```bash
 dfx canister call auth hasRole '(principal "rrkah-fqaaa-aaaaa-aaaaq-cai", variant { admin })'
 ```
@@ -100,15 +108,19 @@ type UserProfile = {
 ### Public Methods
 
 #### `createProfile(profile: UserProfile) : async Result<(), Text>`
+
 Creates a new user profile.
 
 #### `getProfile() : async ?UserProfile`
+
 Gets the current user's profile.
 
 #### `updateProfile(profile: UserProfile) : async Result<(), Text>`
+
 Updates the current user's profile.
 
 #### `getUserByUsername(username: Text) : async ?UserProfile`
+
 Gets a user profile by username.
 
 ---
@@ -143,18 +155,18 @@ type Course = {
 };
 
 type CourseCategory = {
-  #blockchain; #trading; #ai; #motoko; 
-  #icp; #defi; #nft; #web3; 
+  #blockchain; #trading; #ai; #motoko;
+  #icp; #defi; #nft; #web3;
   #programming; #other;
 };
 
 type CourseDifficulty = {
-  #beginner; #intermediate; 
+  #beginner; #intermediate;
   #advanced; #expert;
 };
 
 type CourseStatus = {
-  #pending; #under_review; 
+  #pending; #under_review;
   #approved; #rejected;
 };
 ```
@@ -162,9 +174,11 @@ type CourseStatus = {
 ### Public Methods
 
 #### `createCourse(submission: CourseSubmission) : async Result<Nat, Text>`
+
 Creates a new course (returns course ID).
 
 **Example:**
+
 ```javascript
 const courseSubmission = {
   title: "Introduction to Motoko",
@@ -195,29 +209,37 @@ await courses.createCourse(courseSubmission);
 ```
 
 #### `getCourses() : async [Course]`
+
 Gets all approved courses.
 
 #### `getCourseById(courseId: Nat) : async ?Course`
+
 Gets a specific course by ID.
 
 #### `getCoursesByCategory(category: Text) : async [Course]`
+
 Gets courses by category.
 
 #### `getCoursesByCreator(creatorId: Principal) : async [Course]`
+
 Gets all courses by a specific creator.
 
 #### `searchCourses(searchQuery: Text) : async [Course]`
+
 Searches courses by title or description.
 
 ### Admin Methods
 
 #### `approveCourse(courseId: Nat) : async Result<(), Text>`
+
 Approves a course (admin only).
 
 #### `rejectCourse(courseId: Nat, reason: ?Text) : async Result<(), Text>`
+
 Rejects a course (admin only).
 
 #### `getCoursesForApproval() : async [Course]`
+
 Gets all courses pending approval (admin only).
 
 ---
@@ -251,18 +273,23 @@ type QuizResult = {
 ### Public Methods
 
 #### `getRandomQuiz(category: ?Text) : async ?Quiz`
+
 Gets a random quiz question, optionally filtered by category.
 
 #### `submitQuizAnswer(quizId: Nat, answer: Text) : async Result<Bool, Text>`
+
 Submits an answer to a quiz question.
 
 #### `getUserQuizHistory() : async [QuizResult]`
+
 Gets the current user's quiz history.
 
 #### `getUserTokenBalance() : async Nat`
+
 Gets the current user's token balance.
 
 #### `addTokenReward(user: Principal, amount: Nat) : async ()`
+
 Adds token rewards to a user (internal use).
 
 ---
@@ -274,24 +301,29 @@ Manages daily quests and special challenges.
 ### Public Methods
 
 #### `completeQuest() : async Bool`
+
 Completes a quest and rewards the user with tokens.
 
 **Example:**
+
 ```javascript
 // Complete a quest (awards 10 tokens)
 const result = await quests.completeQuest();
 ```
 
 #### `dailyClaim() : async Bool`
+
 Claims daily reward tokens.
 
 **Example:**
+
 ```javascript
 // Claim daily rewards (awards 5 tokens)
 const result = await quests.dailyClaim();
 ```
 
 #### `referralFriend() : async ()`
+
 Rewards user for referring a friend.
 
 ---
@@ -330,18 +362,23 @@ type Reply = {
 ### Public Methods
 
 #### `createPost(title: Text, content: Text, category: Text, tags: [Text]) : async Result<Nat, Text>`
+
 Creates a new forum post.
 
 #### `getPosts() : async [Post]`
+
 Gets all forum posts.
 
 #### `getPostById(postId: Nat) : async ?Post`
+
 Gets a specific post by ID.
 
 #### `addReply(postId: Nat, content: Text) : async Result<Nat, Text>`
+
 Adds a reply to a post.
 
 #### `upvotePost(postId: Nat) : async Result<(), Text>`
+
 Upvotes a post.
 
 ---
@@ -364,12 +401,15 @@ type NFTMetadata = {
 ### Public Methods
 
 #### `mint(to: Principal, metadata: NFTMetadata) : async Result<Nat, Text>`
+
 Mints a new NFT certificate.
 
 #### `getTokenMetadata(tokenId: Nat) : async ?NFTMetadata`
+
 Gets metadata for a specific NFT.
 
 #### `getUserTokens(user: Principal) : async [Nat]`
+
 Gets all NFT token IDs owned by a user.
 
 ---
@@ -387,9 +427,10 @@ const authClient = await AuthClient.create();
 
 // Create agent
 const agent = new HttpAgent({
-  host: process.env.NODE_ENV === "development" 
-    ? "http://localhost:4943" 
-    : "https://ic0.app"
+  host:
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:4943"
+      : "https://ic0.app",
 });
 
 // Create actors for each canister
@@ -402,7 +443,7 @@ const courses = Actor.createActor(coursesIdlFactory, {
 ### Example React Hook
 
 ```typescript
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from "@/contexts/AuthContext";
 
 export function useCourses() {
   const { actors } = useAuth();
@@ -412,7 +453,7 @@ export function useCourses() {
       const courses = await actors.courses.getCourses();
       return courses;
     } catch (error) {
-      console.error('Failed to fetch courses:', error);
+      console.error("Failed to fetch courses:", error);
       return [];
     }
   };
@@ -420,13 +461,13 @@ export function useCourses() {
   const createCourse = async (courseData) => {
     try {
       const result = await actors.courses.createCourse(courseData);
-      if ('ok' in result) {
+      if ("ok" in result) {
         return result.ok;
       } else {
         throw new Error(result.err);
       }
     } catch (error) {
-      console.error('Failed to create course:', error);
+      console.error("Failed to create course:", error);
       throw error;
     }
   };
@@ -441,17 +482,17 @@ export function useCourses() {
 // Standard error handling pattern
 try {
   const result = await actors.courses.createCourse(courseData);
-  
-  if ('ok' in result) {
+
+  if ("ok" in result) {
     // Success
-    console.log('Course created with ID:', result.ok);
+    console.log("Course created with ID:", result.ok);
   } else {
     // Error
-    console.error('Failed to create course:', result.err);
+    console.error("Failed to create course:", result.err);
   }
 } catch (error) {
   // Network or other errors
-  console.error('Network error:', error);
+  console.error("Network error:", error);
 }
 ```
 
@@ -502,16 +543,19 @@ dfx canister call profile getProfile
 ## 🔒 Security Considerations
 
 ### Authentication
+
 - All write operations require authentication
 - Anonymous users can only read public data
 - Admin operations require specific roles
 
 ### Input Validation
+
 - All text inputs are validated for length and content
 - Principal IDs are verified
 - Numeric inputs are checked for valid ranges
 
 ### Rate Limiting
+
 - Quiz submissions are rate-limited per user
 - Token rewards have daily limits
 - Course creation has cooldown periods
@@ -519,6 +563,7 @@ dfx canister call profile getProfile
 ## 📊 Performance Tips
 
 ### Batch Operations
+
 ```motoko
 // Instead of multiple single calls
 let courses = await Promise.all([
@@ -532,6 +577,7 @@ let courses = await actors.courses.getCoursesByIds([1, 2, 3]);
 ```
 
 ### Caching
+
 ```typescript
 // Cache frequently accessed data
 const courseCache = new Map<number, Course>();
@@ -540,7 +586,7 @@ const getCourse = async (id: number) => {
   if (courseCache.has(id)) {
     return courseCache.get(id);
   }
-  
+
   const course = await actors.courses.getCourseById(id);
   courseCache.set(id, course);
   return course;
@@ -550,16 +596,19 @@ const getCourse = async (id: number) => {
 ## 🐛 Common Issues
 
 ### "Call rejected" errors
+
 - Check authentication status
 - Verify canister is deployed
 - Ensure user has required permissions
 
 ### "Out of cycles" errors
+
 - Top up canister cycles
 - Optimize query vs update calls
 - Use query methods when possible
 
 ### Type mismatches
+
 - Verify IDL definitions are up to date
 - Check parameter formatting
 - Ensure proper variant syntax

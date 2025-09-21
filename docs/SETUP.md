@@ -7,6 +7,7 @@ This guide will help you set up KnowFi for local development and deployment on t
 Before you begin, ensure you have the following installed on your system:
 
 ### Required Software
+
 - **Node.js** (v16.0.0 or higher)
 - **npm** (v7.0.0 or higher) or **Yarn** (v1.22.0 or higher)
 - **DFX** (DFINITY Canister SDK)
@@ -177,6 +178,7 @@ dfx canister call auth getUserRole --network local
 ### Common Issues
 
 #### 1. Port Already in Use
+
 ```bash
 # Kill process using port 4943 (DFX)
 lsof -ti:4943 | xargs kill -9
@@ -186,6 +188,7 @@ lsof -ti:3000 | xargs kill -9
 ```
 
 #### 2. DFX Start Issues
+
 ```bash
 # Stop and restart DFX
 dfx stop
@@ -193,6 +196,7 @@ dfx start --clean
 ```
 
 #### 3. Canister Deployment Failures
+
 ```bash
 # Check DFX identity
 dfx identity whoami
@@ -207,6 +211,7 @@ dfx deploy
 ```
 
 #### 4. Frontend Build Issues
+
 ```bash
 # Clear Next.js cache
 cd src/know_fi_frontend
@@ -215,6 +220,7 @@ yarn build
 ```
 
 #### 5. Internet Identity Not Working
+
 ```bash
 # Ensure Internet Identity canister is deployed
 dfx canister status internet_identity
@@ -242,6 +248,7 @@ dfx deploy
 ## 📚 Development Workflow
 
 ### 1. Making Changes to Backend (Motoko)
+
 ```bash
 # After modifying .mo files
 dfx deploy <canister_name>
@@ -254,6 +261,7 @@ dfx canister logs courses
 ```
 
 ### 2. Making Changes to Frontend
+
 ```bash
 # Changes are automatically reflected with hot reload
 # No additional steps needed during development
@@ -264,6 +272,7 @@ yarn build
 ```
 
 ### 3. Testing Canister Functions
+
 ```bash
 # Test canister methods directly
 dfx canister call courses getCourses
@@ -275,11 +284,13 @@ dfx canister call auth assignRole '(principal "rrkah-fqaaa-aaaaa-aaaaq-cai", var
 ## 🔐 Security Notes
 
 ### Development Environment
+
 - Never use production private keys in development
 - Internet Identity is safe to use in local development
 - Local canisters are ephemeral and reset on `dfx start --clean`
 
 ### Production Environment
+
 - Ensure proper access controls are configured
 - Backup your DFX identity
 - Use hardware wallets for significant ICP holdings

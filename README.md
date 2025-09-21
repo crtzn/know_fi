@@ -11,6 +11,7 @@ Empowering the next generation of Web3 learners and builders.
 KnowFi is built using a modern, scalable architecture on the Internet Computer:
 
 ### 🔧 Backend Canisters (Motoko)
+
 - **`auth`** - Authentication and authorization management
 - **`profile`** - User profile management and social features
 - **`courses`** - Course creation, approval, and content delivery
@@ -20,6 +21,7 @@ KnowFi is built using a modern, scalable architecture on the Internet Computer:
 - **`icrc7`** - NFT minting and marketplace functionality
 
 ### 🎨 Frontend (Next.js 14)
+
 - **Modern React** with TypeScript
 - **Tailwind CSS** for responsive styling
 - **Radix UI** components for accessibility
@@ -27,6 +29,7 @@ KnowFi is built using a modern, scalable architecture on the Internet Computer:
 - **Internet Identity** integration for Web3 authentication
 
 ### 🛠️ Key Technologies
+
 - **Internet Computer Protocol (ICP)** - Decentralized hosting and smart contracts
 - **Motoko** - Backend smart contract development
 - **Internet Identity** - Decentralized authentication
@@ -38,12 +41,14 @@ KnowFi is built using a modern, scalable architecture on the Internet Computer:
 ## ✨ Key Features
 
 ### 📚 **Interactive Learning Platform**
+
 - **Comprehensive Courses**: From blockchain basics to advanced Motoko programming
 - **Hands-on Labs**: Integrated code editor for practical learning
 - **Video Content**: High-quality educational videos and tutorials
 - **Progress Tracking**: Monitor your learning journey and achievements
 
 ### 🎮 **Gamification & Rewards**
+
 - **Knowkens Token System**: Earn tokens for completing activities
 - **Daily Quests**: Regular challenges to maintain engagement
 - **Achievement NFTs**: Collect certificates and badges as NFTs
@@ -51,18 +56,21 @@ KnowFi is built using a modern, scalable architecture on the Internet Computer:
 - **Energy System**: Manage your learning sessions strategically
 
 ### 👥 **Community Features**
+
 - **User Profiles**: Showcase your learning achievements
 - **Social Integration**: Connect your social media accounts
 - **Forum Discussions**: Engage with the KnowFi community
 - **Course Reviews**: Rate and review educational content
 
 ### 🏫 **Creator Economy**
+
 - **Course Creation**: Educators can submit new courses
 - **Content Approval**: Quality-controlled course approval system
 - **Revenue Sharing**: Creators earn tokens from successful courses
 - **Community Contributions**: Collaborative content development
 
 ### 🔒 **Web3 Integration**
+
 - **Decentralized Authentication**: Internet Identity integration
 - **On-chain Certificates**: NFT-based course completion certificates
 - **Token Economy**: Transparent, blockchain-based reward system
@@ -161,12 +169,14 @@ yarn dev
 ## 🛠️ Technology Stack
 
 ### Backend (Internet Computer)
+
 - **Motoko** - Smart contract development
 - **DFX** - DFINITY Canister SDK
 - **Internet Identity** - Decentralized authentication
 - **ICRC-7** - NFT standard
 
 ### Frontend
+
 - **Next.js 14** - React framework
 - **TypeScript** - Type-safe JavaScript
 - **Tailwind CSS** - Utility-first styling
@@ -174,6 +184,7 @@ yarn dev
 - **Monaco Editor** - Code editor integration
 
 ### Development Tools
+
 - **Yarn** - Package management
 - **ESLint** - Code linting
 - **Prettier** - Code formatting
@@ -243,15 +254,19 @@ Whether you're a student, developer, or curious explorer, KnowFi provides credib
 ## 🗺️ KnowMap - Our Roadmap
 
 ### Phase 1: Development
+
 In this initial phase, the FiDevs focus on building practical tools and solutions for Web3 enthusiasts. These foundational "equipments" will serve as the starting point for users embarking on their Web3 journey, ensuring accessibility, usability, and value from the very beginning.
 
 ### Phase 2: Community Engagement
+
 Once the foundation is in place, FiDevs will expand KnowFi's reach by creating meaningful connections across Web3 communities. This phase is centered on sparking collaboration and engagement among KnowFolks, powered by features like KnowRoom and KnowCreates, which serve as hubs for knowledge-sharing, co-creation, and collaboration.
 
 ### Phase 3: Marketplace Launch
+
 The third phase introduces the KnowFi Marketplace, a cornerstone of the ecosystem where users can explore, trade, and maximize the use of Web3 tools, knowledge assets, and services. This stage also highlights the utility of Knowkens, showcasing their power as the native token driving transactions and interactions across the platform.
 
 ### Phase 4: Staking & Rewards
+
 The fourth phase of this roadmap, the FiDevs will focus on stabilizing and expanding the KnowFi ecosystem. Users (KnowFolks) will gain the ability to stake NFTs and tokens, unlocking opportunities to convert and earn rewards. This marks the full realization of KnowFi's vision—a self-sustaining, community-driven economy of learning, engagement, and growth.
 
 ## 💰 Tokenomics
