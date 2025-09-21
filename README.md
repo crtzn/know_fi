@@ -2,9 +2,11 @@
 
 KnowFi is here today—and we're already building tomorrow.
 
-A world where learning is rewarding, knowledge is currency, and every achievement opens a new door.
+A world where learning is rewarding, knowledge is currency, and every achievement opens a new do### 🌟 The Future – What's Coming Next
 
-Empowering the next generation of Web3 learners and builders.
+- **📣 FiShare + KnowAI – Share Smarter:** Share your achievements instantly to social media, with KnowAI crafting eye-catching captions tailored for you.
+- **🗺️ KnowFi Adventure:** Dive into an epic gamified experience where you earn more Knowkens through quests and challenges powered by KnowCreates content.
+- **💎 KnowFi Marketplace:** Buy, sell, and trade NFTs earned from completing KnowCourses, KnowQuizzes, and KnowFi Adventures—turning learning into a true digital asset economy.powering the next generation of Web3 learners and builders.
 
 ## 🏗️ Architecture Overview
 
@@ -117,10 +119,10 @@ yarn dev
 
 ## 🏆 Hackathon Submission
 
-### ICP Hackathon 2024 Track: **Open Social & Community**
+### ICP Hackathon 2025 Track: **Open Social & Community**
 
 **Team:** KnowFi Team
-**Built for:** Internet Computer Protocol (ICP) Hackathon 2024
+**Built for:** Internet Computer Protocol (ICP) Hackathon 2025
 
 ### Key Innovation Points
 
@@ -217,7 +219,7 @@ know_fi/
 ```
 
 ![KnowFi - Learn, Earn, Share & Shine](./docs/thank-you.png)
-[![ICP Hackathon 2024](https://img.shields.io/badge/ICP%20Hackathon-2024-purple)](https://hackathons.icp.org/)
+[![ICP Hackathon 2025](https://img.shields.io/badge/ICP%20Hackathon-2025-purple)](https://hackathons.icp.org/)
 [![Built on ICP](https://img.shields.io/badge/Built%20on-Internet%20Computer-29abe2)](https://internetcomputer.org/)
 [![Motoko](https://img.shields.io/badge/Backend-Motoko-blue)](https://motoko.org/)
 [![Next.js](https://img.shields.io/badge/Frontend-Next.js-black)](https://nextjs.org/)
@@ -240,6 +242,8 @@ Whether you're a student, developer, or curious explorer, KnowFi provides credib
   - Welcome KnowQuest: A one-time challenge to kickstart your journey.
   - Daily KnowQuest: Daily challenges to keep your learning momentum alive.
 - **🖼️ Embedded KnowFi Profile:** Showcase your learning journey by customizing your profile and linking your social media accounts directly in the platform.
+- **🌐 KnowRoom – Where Knowledge Meets Community:** A social hub where KnowFolks can connect, collaborate, and exchange ideas—all without leaving KnowFi.
+- **✍️ KnowCreates – Power to the Creators:** Enable KnowFolks and organizations to create courses, modules, and quizzes, with rewards in Knowkens for every accepted contribution.
 - **🔗 Web3 Integration:** Powered by Internet Computer Protocol (ICP) for a decentralized, transparent, and user-owned learning experience.
 - **⚡ Modern, Responsive Frontend:** Built with Next.js, styled using Tailwind CSS, and managed with Yarn—offering speed, responsiveness, and a sleek user experience.
 
