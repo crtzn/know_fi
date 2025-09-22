@@ -249,8 +249,6 @@ Whether you're a student, developer, or curious explorer, KnowFi provides credib
 
 ### 🌟 The Future – What’s Coming Next
 
-- **🌐 KnowRoom – Where Knowledge Meets Community:** A social hub where KnowFolks can connect, collaborate, and exchange ideas—all without leaving KnowFi.
-- **✍️ KnowCreates – Power to the Creators:** Enable KnowFolks and organizations to create courses, modules, and quizzes, with rewards in Knowkens for every accepted contribution.
 - **📣 FiShare + KnowAI – Share Smarter:** Share your achievements instantly to social media, with KnowAI crafting eye-catching captions tailored for you.
 - **🗺️ KnowFi Adventure:** Dive into an epic gamified experience where you earn more Knowkens through quests and challenges powered by KnowCreates content.
 - **💎 KnowFi Marketplace:** Buy, sell, and trade NFTs earned from completing KnowCourses, KnowQuizzes, and KnowFi Adventures—turning learning into a true digital asset economy.
